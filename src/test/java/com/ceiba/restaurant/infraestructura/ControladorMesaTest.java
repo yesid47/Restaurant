@@ -41,7 +41,7 @@ public class ControladorMesaTest {
     }
 
 
-    @Test
+    /*@Test
     public void getMesaPorIdTest() throws Exception
     {
         mvc.perform( MockMvcRequestBuilders
@@ -50,7 +50,7 @@ public class ControladorMesaTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.idMesa").value(1));
-    }
+    }*/
 
    /* @Test
     public void listarMesasTest() throws Exception

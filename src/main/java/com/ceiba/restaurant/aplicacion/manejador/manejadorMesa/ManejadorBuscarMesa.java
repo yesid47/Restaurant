@@ -1,9 +1,7 @@
 package com.ceiba.restaurant.aplicacion.manejador.manejadorMesa;
 
 import com.ceiba.restaurant.dominio.Mesa;
-import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.servicio.mesa.ServicioBuscarMesa;
-import com.ceiba.restaurant.dominio.servicio.persona.ServicioBuscarPersona;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

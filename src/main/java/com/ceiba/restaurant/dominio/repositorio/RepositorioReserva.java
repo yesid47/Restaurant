@@ -1,6 +1,5 @@
 package com.ceiba.restaurant.dominio.repositorio;
 
-
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.Reserva;
 
