@@ -52,7 +52,7 @@ public class ControladorMesaTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.idMesa").value(1));
     }
 
-    @Test
+   /* @Test
     public void listarMesasTest() throws Exception
     {
 
@@ -61,5 +61,5 @@ public class ControladorMesaTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }
+    }*/
 }

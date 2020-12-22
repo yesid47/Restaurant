@@ -4,8 +4,6 @@ import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class ServicioBuscarMesa {
 
