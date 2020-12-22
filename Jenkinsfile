@@ -27,7 +27,7 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-        sh 'gradle --b ./restaurant/build.gradle clean compileJava'
+        sh 'gradle --b ./build.gradle clean compileJava'
 		sh 'gradle --b ./build.gradle test'
 
 
@@ -57,9 +57,13 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
     }
     success {
       echo 'This will run only if successful'
+      junit 'build/test-results/test/*.xml'
+
     }
     failure {
       echo 'This will run only if failed'
+      mail (to: 'yesid.orrego@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
+
     }
     unstable {
       echo 'This will run only if the run was marked as unstable'
