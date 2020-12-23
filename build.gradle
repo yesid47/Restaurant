@@ -28,6 +28,7 @@ dependencies {
 	implementation 'org.hibernate:hibernate-core:5.2.9.Final'
 	testImplementation 'junit:junit:4.12'
 	testImplementation 'org.mockito:mockito-all:1.10.19'
+
 }
 
 test {

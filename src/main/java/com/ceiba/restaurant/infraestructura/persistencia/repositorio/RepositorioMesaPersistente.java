@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 public class RepositorioMesaPersistente implements RepositorioMesa {
-    private static final String FIND_ALL ="SELECT id,capacidad,numero_mesa,precio FROM mesa";
+    private static final String FIND_ALL ="SELECT mesa FROM mesa as mesa";
 
     private EntityManager entityManager;
 

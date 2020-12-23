@@ -27,7 +27,7 @@ public class ControladorPersonaTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-
+/*
     @Test
     public void agregarPersonaTest() throws Exception
     {
@@ -41,7 +41,7 @@ public class ControladorPersonaTest {
     }
 
 
-   /* @Test
+    @Test
     public void getPersonaPorIdTest() throws Exception
     {
         mvc.perform( MockMvcRequestBuilders
@@ -50,7 +50,7 @@ public class ControladorPersonaTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.idPersona").value(1));
-    }*/
+    }
 
     @Test
     public void listarPersonasTest() throws Exception
@@ -63,6 +63,6 @@ public class ControladorPersonaTest {
                 .andExpect(status().isOk());
     }
 
-
+*/
 
 }

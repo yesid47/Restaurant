@@ -16,9 +16,6 @@ public class FacturaEntity {
     @Column(name="valorAPagar")
     private double valorAPagar;
 
-    @OneToMany
-    @JoinColumn(name="id_reserva",referencedColumnName="id")
-    private List<ReservaEntity> reserva;
 
     public long getId() {
         return id;
@@ -45,11 +42,4 @@ public class FacturaEntity {
         this.id = id;
     }
 
-    public List<ReservaEntity> getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(List<ReservaEntity> reserva) {
-        this.reserva = reserva;
-    }
 }

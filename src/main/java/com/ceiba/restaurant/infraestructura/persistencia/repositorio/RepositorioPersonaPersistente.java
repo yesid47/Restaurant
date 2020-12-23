@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class RepositorioPersonaPersistente implements RepositorioPersona {
 
-    private static final String FIND_ALL ="SELECT id,cedula,celular,direccion,email,nombre FROM persona";
+    private static final String FIND_ALL ="SELECT persona FROM persona as persona";
     private EntityManager entityManager;
 
     public RepositorioPersonaPersistente(EntityManager entityManager){
@@ -41,7 +41,13 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
     @Override
     public List<Persona> listarPersonas() {
         Query query = entityManager.createQuery(FIND_ALL);
-        return (ArrayList<Persona>) query.getResultList();
+        ArrayList<Persona> listaDominio = new ArrayList<Persona>();
+        ArrayList<PersonaEntity> listaEntity= (ArrayList<PersonaEntity>) query.getResultList();
+        for (PersonaEntity persona : listaEntity){
+            listaDominio.add(PersonaBuilder.convertirADominio(persona));
+        }
+
+        return listaDominio;
     }
 
     @Override

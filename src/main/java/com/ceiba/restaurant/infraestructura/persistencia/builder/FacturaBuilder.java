@@ -22,7 +22,7 @@ public class FacturaBuilder {
         facturaEntity.setId(factura.getIdFactura());
         facturaEntity.setConsecutivoFactura(factura.getConsecutivo());
         facturaEntity.setValorAPagar(factura.getValorAPagar());
-        facturaEntity.setReserva(null);
+        //facturaEntity.setReserva(null);
 
         return facturaEntity;
     }

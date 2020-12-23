@@ -1,52 +1,45 @@
 package com.ceiba.restaurant.aplicacion.comando;
 
-import com.ceiba.restaurant.dominio.Mesa;
-import com.ceiba.restaurant.dominio.Usuario;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class ComandoReserva {
 
     private long idReserva;
-    private Date fecha;
-    private Date horaInicio;
-    private Date horaFinal;
-    private Usuario usuario;
-    private Mesa mesa;
+    private LocalDate fecha;
+    private LocalTime horaInicio;
+    private long persona;
+    private int mesa;
 
     public ComandoReserva(){
         super();
     }
 
-    public ComandoReserva(Date fecha, Date horaInicio, Date horaFinal, Usuario usuario, Mesa mesa) {
+    public ComandoReserva(LocalDate fecha, LocalTime horaInicio, long persona, int mesa) {
         this.fecha = fecha;
         this.horaInicio = horaInicio;
-        this.horaFinal = horaFinal;
-        this.usuario = usuario;
+        this.persona = persona;
         this.mesa= mesa;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public LocalTime getHoraInicio() {
+        return horaInicio;
     }
 
     public long getIdReserva() {
         return idReserva;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public long getPersona() {
+        return persona;
     }
 
-    public Date getHoraInicio() {
-        return horaInicio;
-    }
-
-    public Date getHoraFinal() {
-        return horaFinal;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public Mesa getMesa() {
+    public int getMesa() {
         return mesa;
     }
 }

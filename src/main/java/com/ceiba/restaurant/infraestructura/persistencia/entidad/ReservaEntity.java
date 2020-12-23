@@ -1,6 +1,8 @@
 package com.ceiba.restaurant.infraestructura.persistencia.entidad;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -9,23 +11,23 @@ public class ReservaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name = "id")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name="id_usuario",referencedColumnName="id")
-    private UsuarioEntity usuario;
+    @JoinColumn(name = "id_persona", referencedColumnName = "id")
+    private PersonaEntity persona;
 
     @OneToOne
-    @JoinColumn(name="id_mesa",referencedColumnName="id")
+    @JoinColumn(name = "id_mesa", referencedColumnName = "id")
     private MesaEntity mesa;
 
-    @Column(name="fecha")
-    private Date fecha;
-    @Column(name="horaInicial")
-    private Date horaInicial;
-    @Column(name="horaFinal")
-    private Date horaFinal;
+    @Column(name = "fecha")
+    private LocalDate fecha;
+    @Column(name = "horaInicial")
+    private LocalTime horaInicial;
+    @Column(name = "horaFinal")
+    private LocalTime horaFinal;
 
     public long getId() {
         return id;
@@ -35,12 +37,12 @@ public class ReservaEntity {
         this.id = id;
     }
 
-    public UsuarioEntity getUsuario() {
-        return usuario;
+    public PersonaEntity getPersona() {
+        return persona;
     }
 
-    public void setUsuario(UsuarioEntity usuario) {
-        this.usuario = usuario;
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
     }
 
     public MesaEntity getMesa() {
@@ -51,27 +53,27 @@ public class ReservaEntity {
         this.mesa = mesa;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
-    public Date getHoraInicial() {
+    public LocalTime getHoraInicial() {
         return horaInicial;
     }
 
-    public void setHoraInicial(Date horaInicial) {
+    public void setHoraInicial(LocalTime horaInicial) {
         this.horaInicial = horaInicial;
     }
 
-    public Date getHoraFinal() {
+    public LocalTime getHoraFinal() {
         return horaFinal;
     }
 
-    public void setHoraFinal(Date horaFinal) {
+    public void setHoraFinal(LocalTime horaFinal) {
         this.horaFinal = horaFinal;
     }
 }

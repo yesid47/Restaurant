@@ -1,15 +1,8 @@
 package com.ceiba.restaurant.infraestructura.controller;
 
-import com.ceiba.restaurant.aplicacion.comando.ComandoMesa;
 import com.ceiba.restaurant.aplicacion.comando.ComandoReserva;
-import com.ceiba.restaurant.aplicacion.manejador.manejador.ManejadorCrearReserva;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorMesa.ManejadorBuscarMesa;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorMesa.ManejadorCrearMesa;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorMesa.ManejadorListarMesas;
-import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.aplicacion.manejador.manejadorreserva.ManejadorCrearReserva;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("reserva")
@@ -25,7 +18,7 @@ public class ControladorReserva {
 
     @PostMapping
     public void agregar(@RequestBody ComandoReserva comandoReserva){
-       // this.manejadorCrearReserva.ejecutar(comandoReserva);
+       this.manejadorCrearReserva.ejecutar(comandoReserva);
     }
 
   /*  @GetMapping("/{id}")
