@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 public class RepositorioMesaPersistente implements RepositorioMesa {
     private static final String FIND_ALL ="SELECT mesa FROM mesa as mesa";
+    private static final String FIND_BY_NUMERO = "SELECT mesa FROM mesa as mesa WHERE mesa.numero_mesa = :numero";
 
     private EntityManager entityManager;
 
@@ -52,5 +53,18 @@ public class RepositorioMesaPersistente implements RepositorioMesa {
     @Override
     public void eliminar(long id) {
 
+    }
+
+    @Override
+    public Mesa obtenerPorNumero(int numero) {
+        MesaEntity mesaEntity = obtenerMesaEntityPorNumero(numero);
+        return MesaBuilder.convertirADominio(mesaEntity);
+    }
+
+    private MesaEntity obtenerMesaEntityPorNumero(int numero) {
+        Query query = entityManager.createQuery(FIND_BY_NUMERO);
+        query.setParameter("numero",numero);
+
+        return (MesaEntity) query.getSingleResult();
     }
 }

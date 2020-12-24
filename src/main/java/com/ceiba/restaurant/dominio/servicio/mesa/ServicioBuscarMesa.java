@@ -13,7 +13,7 @@ public class ServicioBuscarMesa {
         this.repositorioMesa = repositorioMesa;
     }
 
-    public Mesa ejecutar(int id){
-        return this.repositorioMesa.obtenerPorId(id);
+    public Mesa ejecutar(int numero){
+        return this.repositorioMesa.obtenerPorNumero(numero);
     }
 }

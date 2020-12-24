@@ -5,17 +5,15 @@ import com.ceiba.restaurant.infraestructura.persistencia.repositorio.Repositorio
 import org.springframework.stereotype.Component;
 
 @Component
-public class ServicioCrearReserva {
+public class ServicioValidarReserva {
     private RepositorioReservaPersistente repositorioReservaPersistente;
 
-    public ServicioCrearReserva(RepositorioReservaPersistente repositorioReservaPersistente){
+    public ServicioValidarReserva(RepositorioReservaPersistente repositorioReservaPersistente){
         this.repositorioReservaPersistente = repositorioReservaPersistente;
 
     }
 
-    public void ejecutar(Reserva reserva){
-
-        this.repositorioReservaPersistente.agregar(reserva);
+    public boolean ejecutar(Reserva reserva){
+        return this.repositorioReservaPersistente.validarDisponibilidad(reserva.getFecha(),reserva.getHoraInicio(),reserva.getHoraFinal(), reserva.getMesa());
     }
-
 }

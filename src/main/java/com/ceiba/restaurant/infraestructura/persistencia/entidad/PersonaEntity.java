@@ -1,4 +1,5 @@
 package com.ceiba.restaurant.infraestructura.persistencia.entidad;
+
 import javax.persistence.*;
 
 @Entity(name="persona")
@@ -9,13 +10,13 @@ public class PersonaEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private long id;
-    @Column(name="nombre")
+    @Column(name="nombre", nullable = false)
     private String nombre;
-    @Column(name="cedula")
+    @Column(name="cedula", nullable = false, unique = true )
     private String cedula;
-    @Column(name="celular")
+    @Column(name="celular", nullable = false, unique = true )
     private long celular;
-    @Column(name="email")
+    @Column(name="email", nullable = false)
     private String email;
     @Column(name="direccion")
     private String direccion;

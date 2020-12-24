@@ -15,4 +15,8 @@ public class ServicioBuscarPersona {
     public Persona ejecutar(long id){
         return this.repositorioPersona.obtenerPorId(id);
     }
+
+    public Persona ejecutar(String cedula){
+        return this.repositorioPersona.obtenerPorCedula(cedula);
+    }
 }

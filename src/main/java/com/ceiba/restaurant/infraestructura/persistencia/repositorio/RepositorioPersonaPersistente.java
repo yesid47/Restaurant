@@ -15,6 +15,8 @@ import java.util.List;
 public class RepositorioPersonaPersistente implements RepositorioPersona {
 
     private static final String FIND_ALL ="SELECT persona FROM persona as persona";
+    private static final String OBTENER_PERSONA = "SELECT persona FROM persona as persona WHERE persona.cedula = :cedula";
+
     private EntityManager entityManager;
 
     public RepositorioPersonaPersistente(EntityManager entityManager){
@@ -33,7 +35,7 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
     }
 
     private PersonaEntity obtenerPersonaEntityPorId(long id) {
-        PersonaEntity query = entityManager.find(PersonaEntity.class,id);//createQuery(PERSONA_FIND_BY_ID);
+        PersonaEntity query = entityManager.find(PersonaEntity.class,id);
 
         return query;
     }
@@ -56,5 +58,18 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
             /*Query query = entityManager.createQuery(DELETE_PERSONA);
             query.setParameter("id",id);*/
         }
+    }
+
+    @Override
+    public Persona obtenerPorCedula(String cedula) {
+        PersonaEntity personaEntity = obtenerPersonaEntityPorCedula(cedula);
+        return PersonaBuilder.convertirADominio(personaEntity);
+    }
+
+    private PersonaEntity obtenerPersonaEntityPorCedula(String cedula) {
+        Query query = entityManager.createQuery(OBTENER_PERSONA);
+        query.setParameter("cedula", cedula);
+
+        return (PersonaEntity) query.getSingleResult();
     }
 }

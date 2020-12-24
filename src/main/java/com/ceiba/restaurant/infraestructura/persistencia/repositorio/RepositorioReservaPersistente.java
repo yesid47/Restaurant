@@ -3,6 +3,7 @@ package com.ceiba.restaurant.infraestructura.persistencia.repositorio;
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.Reserva;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioReserva;
+import com.ceiba.restaurant.infraestructura.persistencia.builder.MesaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.ReservaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.ReservaEntity;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +20,10 @@ import java.util.List;
 public class RepositorioReservaPersistente implements RepositorioReserva {
 
     private static final String FIND_ALL="SELECT reserva FROM reserva as reserva";
+    private static final String disponibilidadMesa=
+            "SELECT reserva FROM reserva as reserva WHERE reserva.fecha = :fecha and reserva.mesa = :id_mesa and (reserva.hora_final BETWEEN :horaInicial and :horaFinal or reserva.hora_inicial BETWEEN :horaInicial and :horaFinal)";
 
+     //"SELECT reserva FROM reserva as reserva WHERE reserva.fecha = :fecha and reserva.id_mesa =: id_mesa and(reserva.hora_final BETWEEN :horaInicial and :horaFinal or reserva.hora_inicial BETWEEN :horaInicial and :horaFinal)";
     private EntityManager entityManager;
 
     public RepositorioReservaPersistente(EntityManager entityManager){
@@ -41,10 +47,6 @@ public class RepositorioReservaPersistente implements RepositorioReserva {
         entityManager.persist(ReservaBuilder.convertirAEntity(reserva));
     }
 
-    @Override
-    public Mesa obtenerMesaReservada(int id) {
-        return null;
-    }
 
     @Override
     public List<Reserva> listarTodo() {
@@ -57,4 +59,17 @@ public class RepositorioReservaPersistente implements RepositorioReserva {
 
         return listaDominio;
     }
+
+    @Override
+    public boolean validarDisponibilidad(LocalDate fecha, LocalTime horaInicial, LocalTime horaFinal, Mesa mesa) {
+        System.out.println("holaaaaaaaaaaaaaaaaaaaaaaa"+fecha.toString()+horaInicial.toString()+horaFinal.toString()+mesa.getIdMesa());
+        MesaEntity mesaEntity = MesaBuilder.convertirAEntity(mesa);
+        Query query = entityManager.createQuery(disponibilidadMesa);
+        query.setParameter("fecha",fecha);
+        query.setParameter("id_mesa",mesaEntity);
+        query.setParameter("horaInicial",horaInicial);
+        query.setParameter("horaFinal",horaFinal);
+        return  ((ReservaEntity) query.getSingleResult()!=null);
+    }
+
 }

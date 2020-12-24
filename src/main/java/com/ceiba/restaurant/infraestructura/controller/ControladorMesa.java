@@ -27,9 +27,10 @@ public class ControladorMesa {
         this.manejadorCrearMesa.ejecutar(comandoMesa);
     }
 
-    @GetMapping("/{id}")
-    public Mesa buscar(@PathVariable(name="id") int id){
-        return this.manejadorBuscarMesa.ejecutar(id);
+
+    @GetMapping("/{numeroMesa}")
+    public Mesa buscarPorNumero(@PathVariable(name="numeroMesa") int numeroMesa){
+        return this.manejadorBuscarMesa.ejecutar(numeroMesa);
     }
 
     @GetMapping("/mesas")

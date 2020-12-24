@@ -9,14 +9,14 @@ public class ComandoReserva {
     private long idReserva;
     private LocalDate fecha;
     private LocalTime horaInicio;
-    private long persona;
+    private String persona;
     private int mesa;
 
     public ComandoReserva(){
         super();
     }
 
-    public ComandoReserva(LocalDate fecha, LocalTime horaInicio, long persona, int mesa) {
+    public ComandoReserva(LocalDate fecha, LocalTime horaInicio, String persona, int mesa) {
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.persona = persona;
@@ -35,7 +35,7 @@ public class ComandoReserva {
         return idReserva;
     }
 
-    public long getPersona() {
+    public String getPersona() {
         return persona;
     }
 

@@ -1,11 +1,12 @@
 package com.ceiba.restaurant.infraestructura.persistencia.entidad;
 
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
-@Entity
+
+@Entity(name="reserva")
 @Table(name="reserva")
 public class ReservaEntity {
 
@@ -21,13 +22,16 @@ public class ReservaEntity {
     @OneToOne
     @JoinColumn(name = "id_mesa", referencedColumnName = "id")
     private MesaEntity mesa;
-
-    @Column(name = "fecha")
+    @Column(name = "fecha", nullable = false )
     private LocalDate fecha;
-    @Column(name = "horaInicial")
-    private LocalTime horaInicial;
-    @Column(name = "horaFinal")
-    private LocalTime horaFinal;
+    @Column(name = "hora_inicial", nullable = false)
+    private LocalTime hora_inicial;
+    @Column(name = "hora_final", nullable = false)
+    private LocalTime hora_final;
+    @Column(name = "valor_pagar", nullable = false)
+    private double valor_pagar;
+    @Column(name = "estado", nullable = false)
+    private boolean estado;
 
     public long getId() {
         return id;
@@ -62,18 +66,34 @@ public class ReservaEntity {
     }
 
     public LocalTime getHoraInicial() {
-        return horaInicial;
+        return hora_inicial;
     }
 
-    public void setHoraInicial(LocalTime horaInicial) {
-        this.horaInicial = horaInicial;
+    public void setHoraInicial(LocalTime hora_inicial) {
+        this.hora_inicial = hora_inicial;
     }
 
     public LocalTime getHoraFinal() {
-        return horaFinal;
+        return hora_final;
     }
 
     public void setHoraFinal(LocalTime horaFinal) {
-        this.horaFinal = horaFinal;
+        this.hora_final = horaFinal;
+    }
+
+    public double getValor_pagar() {
+        return valor_pagar;
+    }
+
+    public void setValor_pagar(double valor_pagar) {
+        this.valor_pagar = valor_pagar;
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 }

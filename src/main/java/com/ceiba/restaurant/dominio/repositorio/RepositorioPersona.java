@@ -12,4 +12,6 @@ public interface RepositorioPersona {
     List<Persona> listarPersonas();
 
     void eliminar(long id);
+
+    Persona obtenerPorCedula(String cedula);
 }

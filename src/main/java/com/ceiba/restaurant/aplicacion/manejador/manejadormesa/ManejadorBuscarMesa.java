@@ -16,7 +16,7 @@ public class ManejadorBuscarMesa {
     }
 
     @Transactional
-    public Mesa ejecutar(int id){
-        return this.servicioBuscarMesa.ejecutar(id);
+    public Mesa ejecutar(int numero){
+        return this.servicioBuscarMesa.ejecutar(numero);
     }
 }

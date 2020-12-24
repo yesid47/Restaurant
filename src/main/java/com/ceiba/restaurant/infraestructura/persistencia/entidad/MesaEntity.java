@@ -1,5 +1,6 @@
 package com.ceiba.restaurant.infraestructura.persistencia.entidad;
 
+
 import javax.persistence.*;
 
 @Entity(name="mesa")
@@ -10,11 +11,11 @@ public class MesaEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private int id;
-    @Column(name="capacidad")
+    @Column(name="capacidad", nullable = false)
     private int capacidad;
-    @Column(name="numero_mesa")
+    @Column(name="numero_mesa", nullable = false, unique = true)
     private int numero_mesa;
-    @Column(name="precio")
+    @Column(name="precio",nullable = false)
     private double precio;
 
     public int getId() {

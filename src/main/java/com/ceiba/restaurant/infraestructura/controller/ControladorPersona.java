@@ -29,9 +29,14 @@ public class ControladorPersona {
 
     }
 
-    @GetMapping("/{id}")
-        public Persona buscar(@PathVariable(name="id") long id){
+    @GetMapping("id/{id}")
+        public Persona buscarPorId(@PathVariable(name="id") long id){
             return this.manejadorBuscarPersona.ejecutar(id);
+    }
+
+    @GetMapping("/{cedula}")
+    public Persona buscarPorCedula(@PathVariable (name="cedula") String cedula){
+        return this.manejadorBuscarPersona.ejecutar(cedula);
     }
 
     @GetMapping("/personas")

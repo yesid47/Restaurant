@@ -14,4 +14,6 @@ public interface RepositorioMesa {
     List<Mesa> listarMesas();
 
     void eliminar(long id);
+
+    Mesa obtenerPorNumero(int numero);
 }

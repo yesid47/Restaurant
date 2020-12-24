@@ -16,7 +16,8 @@ public class ReservaBuilder {
         if(reservaEntity!=null){
             Persona persona = PersonaBuilder.convertirADominio(reservaEntity.getPersona());
             Mesa mesa = MesaBuilder.convertirADominio(reservaEntity.getMesa());
-            reserva = new Reserva(reservaEntity.getId(),reservaEntity.getFecha(),reservaEntity.getHoraInicial(),persona,mesa);
+            reserva = new Reserva(reservaEntity.getId(),reservaEntity.getFecha(),reservaEntity.getHoraInicial(),reservaEntity.getHoraFinal(),
+                    persona,mesa,reservaEntity.getValor_pagar(), reservaEntity.getEstado());
         }
 
         return reserva;
@@ -33,6 +34,8 @@ public class ReservaBuilder {
         reservaEntity.setHoraFinal(reserva.getHoraFinal());
         reservaEntity.setPersona(personaEntity);
         reservaEntity.setMesa(mesaEntity);
+        reservaEntity.setValor_pagar(reserva.getValorAPagar());
+        reservaEntity.setEstado(reserva.getEstado());
         return reservaEntity;
     }
 }

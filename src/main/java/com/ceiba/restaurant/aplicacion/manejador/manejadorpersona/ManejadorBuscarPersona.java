@@ -19,4 +19,9 @@ public class ManejadorBuscarPersona {
     public Persona ejecutar(long id){
         return this.servicioBuscarPersona.ejecutar(id);
     }
+
+    @Transactional
+    public Persona ejecutar(String cedula){
+        return this.servicioBuscarPersona.ejecutar(cedula);
+    }
 }
