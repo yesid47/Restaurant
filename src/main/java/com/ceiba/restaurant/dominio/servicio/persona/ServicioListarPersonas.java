@@ -15,6 +15,6 @@ public class ServicioListarPersonas {
     }
 
     public List<Persona> ejecutar(){
-        return this.repositorioPersona.listarPersonas();
+        return this.repositorioPersona.listarTodo();
     }
 }

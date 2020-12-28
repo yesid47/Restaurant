@@ -8,12 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class ManejadorEliminarPersona {
 
     private final ServicioEliminarPersona servicioEliminarPersona;
-    //private final FabricaPersona fabricaPersona;
 
     public ManejadorEliminarPersona(ServicioEliminarPersona servicioEliminarPersona)
     {
         this.servicioEliminarPersona = servicioEliminarPersona;
-        //this.fabricaPersona= fabricaPersona;
     }
 
     @Transactional

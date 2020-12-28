@@ -4,17 +4,18 @@ import com.ceiba.restaurant.dominio.Reserva;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioReserva;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
-public class ServicioValidarReserva {
+public class ServicioListarReservas {
+
     private RepositorioReserva repositorioReserva;
 
-    public ServicioValidarReserva(RepositorioReserva repositorioReserva){
+    public ServicioListarReservas(RepositorioReserva repositorioReserva){
         this.repositorioReserva = repositorioReserva;
-
     }
 
-    public boolean ejecutar(Reserva reserva){
-
-        return this.repositorioReserva.validarDisponibilidad(reserva.getFecha(),reserva.getHoraInicio(),reserva.getHoraFinal(), reserva.getMesa());
+    public List<Reserva> ejecutar(){
+        return this.repositorioReserva.listarTodo();
     }
 }

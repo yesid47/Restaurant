@@ -15,6 +15,6 @@ public class ServicioListarMesas {
     }
 
     public List<Mesa> ejecutar(){
-        return this.repositorioMesa.listarMesas();
+        return this.repositorioMesa.listarTodo();
     }
 }

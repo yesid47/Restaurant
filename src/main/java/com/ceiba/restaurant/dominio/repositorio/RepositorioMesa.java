@@ -11,7 +11,7 @@ public interface RepositorioMesa {
 
     Mesa obtenerPorId(int id);
 
-    List<Mesa> listarMesas();
+    List<Mesa> listarTodo();
 
     void eliminar(long id);
 

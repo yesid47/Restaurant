@@ -21,7 +21,7 @@ public class ManejadorCrearPersona {
 
     @Transactional
     public void ejecutar(ComandoPersona comandoPersona){
-        Persona persona = this.fabricaPersona.crearPersona(comandoPersona);
+        Persona persona = this.fabricaPersona.crear(comandoPersona);
         this.servicioCrearPersona.ejecutar(persona);
     }
 }

@@ -9,7 +9,7 @@ public interface RepositorioPersona {
 
     Persona obtenerPorId(long id);
 
-    List<Persona> listarPersonas();
+    List<Persona> listarTodo();
 
     void eliminar(long id);
 

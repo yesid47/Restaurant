@@ -11,17 +11,14 @@ import java.util.List;
 public class ManejadorListarPersonas {
 
     private final ServicioListarPersonas servicioListarPersonas;
-    //private final FabricaPersona fabricaPersona;
 
     public ManejadorListarPersonas(ServicioListarPersonas servicioListarPersonas)
     {
         this.servicioListarPersonas = servicioListarPersonas;
-        //this.fabricaPersona= fabricaPersona;
     }
 
     @Transactional
     public List<Persona> ejecutar(){
-       // Persona persona = this.fabricaPersona.crearPersona(comandoPersona);
         return this.servicioListarPersonas.ejecutar();
     }
 }

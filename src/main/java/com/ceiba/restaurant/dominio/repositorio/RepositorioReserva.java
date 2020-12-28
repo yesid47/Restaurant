@@ -13,9 +13,10 @@ public interface RepositorioReserva {
 
     void agregar(Reserva reserva);
 
-    //Mesa obtenerMesaReservada(int id);
 
     List<Reserva> listarTodo();
 
     boolean validarDisponibilidad(LocalDate fecha, LocalTime horaInicial, LocalTime horaFinal, Mesa mesa);
+
+    void actualizarEstado(LocalDate fechaActual, LocalTime horaActual);
 }

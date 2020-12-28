@@ -40,7 +40,7 @@ public class ControladorPersona {
     }
 
     @GetMapping("/personas")
-    public List<Persona> listarPersonas(){
+    public List<Persona> listarTodo(){
         return this.manejadorListarPersonas.ejecutar();
     }
 

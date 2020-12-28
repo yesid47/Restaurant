@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FabricaMesa {
 
-    public Mesa crearMesa(ComandoMesa comandoMesa){
+    public Mesa crear(ComandoMesa comandoMesa){
         return new Mesa(comandoMesa.getIdMesa(),comandoMesa.getCapacidadPersonas(),comandoMesa.getNumeroMesa(), comandoMesa.getPrecio());
     }
 }
