@@ -19,4 +19,6 @@ public interface RepositorioReserva {
     boolean validarDisponibilidad(LocalDate fecha, LocalTime horaInicial, LocalTime horaFinal, Mesa mesa);
 
     void actualizarEstado(LocalDate fechaActual, LocalTime horaActual);
+
+    void eliminar(long id);
 }

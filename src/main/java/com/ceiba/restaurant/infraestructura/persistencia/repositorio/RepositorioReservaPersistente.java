@@ -79,4 +79,11 @@ public class RepositorioReservaPersistente implements RepositorioReserva {
         query.executeUpdate();
     }
 
+    @Override
+    public void eliminar(long id) {
+        ReservaEntity reservaEntity = obtenerEntityPorId(id);
+        entityManager.remove(reservaEntity);
+    }
+
+
 }

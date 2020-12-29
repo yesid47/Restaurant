@@ -2,8 +2,11 @@ package com.ceiba.restaurant.infraestructura.persistencia.repositorio;
 
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
+import com.ceiba.restaurant.infraestructura.error.ManejadorError;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.MesaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -15,6 +18,8 @@ import java.util.List;
 public class RepositorioMesaPersistente implements RepositorioMesa {
     private static final String FIND_ALL ="SELECT mesa FROM mesa as mesa";
     private static final String FIND_BY_NUMERO = "SELECT mesa FROM mesa as mesa WHERE mesa.numero_mesa = :numero";
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ManejadorError.class);
 
     private EntityManager entityManager;
 
@@ -50,8 +55,9 @@ public class RepositorioMesaPersistente implements RepositorioMesa {
     }
 
     @Override
-    public void eliminar(long id) {
-
+    public void eliminar(int numeroMesa) {
+        MesaEntity mesaEntity= obtenerMesaEntityPorNumero(numeroMesa);
+        entityManager.remove(mesaEntity);
     }
 
     @Override
@@ -60,6 +66,7 @@ public class RepositorioMesaPersistente implements RepositorioMesa {
             MesaEntity mesaEntity = obtenerMesaEntityPorNumero(numero);
             return MesaBuilder.convertirADominio(mesaEntity);
         }catch (Exception e){
+            LOGGER.info(e.toString());
             return null;
         }
     }
@@ -72,7 +79,7 @@ public class RepositorioMesaPersistente implements RepositorioMesa {
 
             return (MesaEntity) query.getSingleResult();
         }catch (Exception e){
-
+            LOGGER.info(e.toString());
             return null;
         }
     }

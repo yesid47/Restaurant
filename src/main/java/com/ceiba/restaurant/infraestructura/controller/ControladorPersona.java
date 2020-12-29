@@ -1,8 +1,10 @@
 package com.ceiba.restaurant.infraestructura.controller;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
+import com.ceiba.restaurant.aplicacion.manejador.manejadormesa.ManejadorEliminarMesa;
 import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorBuscarPersona;
 import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorCrearPersona;
+import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorEliminarPersona;
 import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorListarPersonas;
 import com.ceiba.restaurant.dominio.Persona;
 import org.springframework.web.bind.annotation.*;
@@ -16,11 +18,13 @@ public class ControladorPersona {
     private final ManejadorCrearPersona manejadorCrearPersona;
     private final ManejadorListarPersonas manejadorListarPersonas;
     private final ManejadorBuscarPersona manejadorBuscarPersona;
+    private final ManejadorEliminarPersona manejadorEliminarPersona;
 
-    public ControladorPersona(ManejadorCrearPersona manejadorCrearPersona, ManejadorListarPersonas manejadorListarPersonas, ManejadorBuscarPersona manejadorBuscarPersona){
+    public ControladorPersona(ManejadorCrearPersona manejadorCrearPersona, ManejadorListarPersonas manejadorListarPersonas, ManejadorBuscarPersona manejadorBuscarPersona, ManejadorEliminarPersona manejadorEliminarPersona){
         this.manejadorCrearPersona= manejadorCrearPersona;
         this.manejadorListarPersonas = manejadorListarPersonas;
         this.manejadorBuscarPersona = manejadorBuscarPersona;
+        this.manejadorEliminarPersona = manejadorEliminarPersona;
     }
 
     @PostMapping
@@ -45,7 +49,7 @@ public class ControladorPersona {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable(name="id") int id){
-
+    public void eliminar(@PathVariable(name="id") long id){
+        this.manejadorEliminarPersona.ejecutar(id);
     }
 }

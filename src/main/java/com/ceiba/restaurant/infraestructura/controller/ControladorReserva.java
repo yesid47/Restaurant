@@ -1,10 +1,7 @@
 package com.ceiba.restaurant.infraestructura.controller;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoReserva;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorreserva.ManejadorCrearReserva;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorreserva.ManejadorListarReservas;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorreserva.ManejadorUpdateEstado;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorreserva.ManejadorValidarReserva;
+import com.ceiba.restaurant.aplicacion.manejador.manejadorreserva.*;
 import com.ceiba.restaurant.dominio.Reserva;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,13 +15,15 @@ public class ControladorReserva {
     private final ManejadorValidarReserva manejadorValidarReserva;
     private final ManejadorUpdateEstado manejadorUpdateEstado;
     private final ManejadorListarReservas manejadorListarReservas;
+    private final ManejadorEliminarReserva manejadorEliminarReserva;
 
 
-    public ControladorReserva(ManejadorCrearReserva manejadorCrearReserva, ManejadorValidarReserva manejadorValidarReserva, ManejadorUpdateEstado manejadorUpdateEstado, ManejadorListarReservas manejadorListarReservas){
+    public ControladorReserva(ManejadorCrearReserva manejadorCrearReserva, ManejadorValidarReserva manejadorValidarReserva, ManejadorUpdateEstado manejadorUpdateEstado, ManejadorListarReservas manejadorListarReservas, ManejadorEliminarReserva manejadorEliminarReserva){
         this.manejadorCrearReserva= manejadorCrearReserva;
         this.manejadorValidarReserva = manejadorValidarReserva;
         this.manejadorUpdateEstado = manejadorUpdateEstado;
         this.manejadorListarReservas = manejadorListarReservas;
+        this.manejadorEliminarReserva = manejadorEliminarReserva;
     }
 
     @PostMapping
@@ -48,9 +47,8 @@ public class ControladorReserva {
     }
 
 
-
-/*    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public void eliminar(@PathVariable(name="id") int id){
-
-    }*/
+        this.manejadorEliminarReserva.ejecutar(id);
+    }
 }

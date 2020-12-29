@@ -2,8 +2,11 @@ package com.ceiba.restaurant.infraestructura.persistencia.repositorio;
 
 import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioPersona;
+import com.ceiba.restaurant.infraestructura.error.ManejadorError;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.PersonaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -16,6 +19,8 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
 
     private static final String FIND_ALL ="SELECT persona FROM persona as persona";
     private static final String OBTENER_PERSONA = "SELECT persona FROM persona as persona WHERE persona.cedula = :cedula";
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ManejadorError.class);
 
     private EntityManager entityManager;
 
@@ -52,10 +57,8 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
 
     @Override
     public void eliminar(long id) {
-        if(obtenerPorId(id)!=null){
-            /*Query query = entityManager.createQuery(DELETE_PERSONA);
-            query.setParameter("id",id);*/
-        }
+        PersonaEntity personaEntity = obtenerPersonaEntityPorId(id);
+        entityManager.remove(personaEntity);
     }
 
     @Override
@@ -64,6 +67,7 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
             PersonaEntity personaEntity = obtenerPersonaEntityPorCedula(cedula);
             return PersonaBuilder.convertirADominio(personaEntity);
         }catch (Exception e){
+            LOGGER.info(e.toString());
             return null;
         }
     }
@@ -75,6 +79,7 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
 
             return (PersonaEntity) query.getSingleResult();
         }catch(Exception e){
+            LOGGER.info(e.toString());
             return null;
         }
     }

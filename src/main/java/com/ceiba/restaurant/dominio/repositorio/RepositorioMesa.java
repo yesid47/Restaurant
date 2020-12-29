@@ -12,7 +12,7 @@ public interface RepositorioMesa {
 
     List<Mesa> listarTodo();
 
-    void eliminar(long id);
+    void eliminar(int numeroMesa);
 
     Mesa obtenerPorNumero(int numero);
 }
