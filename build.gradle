@@ -26,6 +26,8 @@ dependencies {
 	implementation group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.10.Final'
 	implementation 'log4j:log4j:1.2.17'
 	implementation 'org.hibernate:hibernate-core:5.2.9.Final'
+   // implementation 'org.flywaydb:flyway-core:5.2.1'
+	//implementation 'org.flywaydb.flyway-test-extensions:flyway-spring-test:5.2.1'
 	testImplementation 'junit:junit:4.12'
 	testImplementation 'org.mockito:mockito-all:1.10.19'
 
@@ -33,4 +35,5 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
