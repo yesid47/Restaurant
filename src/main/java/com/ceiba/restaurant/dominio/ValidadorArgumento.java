@@ -1,10 +1,10 @@
 package com.ceiba.restaurant.dominio;
 
-import com.ceiba.restaurant.dominio.excepcion.ExcepcionLongitudValor;
-import com.ceiba.restaurant.dominio.excepcion.ExcepcionValorInvalido;
-import com.ceiba.restaurant.dominio.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.restaurant.dominio.excepcion.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -12,12 +12,30 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidadorArgumento {
+
+    private static final String LUNES = "MONDAY";
+    private static final String MARTES = "TUESDAY";
+    private static final String MIERCOLES = "WEDNESDAY";
+    private static final LocalTime horaInicial = LocalTime.parse("08:00");
+    private static final LocalTime horaFinal = LocalTime.parse("20:00");
 	
 	private ValidadorArgumento() {}
 
     public static void validarObligatorio(Object valor, String mensaje) {
         if (valor == null) {
             throw new ExcepcionValorObligatorio(mensaje);
+        }
+    }
+
+    public static void validarFecha(LocalDate fecha, String mensaje){
+        if(fecha.getDayOfWeek().toString().equals(LUNES) || fecha.getDayOfWeek().toString().equals(MARTES) || fecha.getDayOfWeek().toString().equals(MIERCOLES)){
+            throw new ExcepcionFechaInvalida(mensaje);
+        }
+    }
+
+    public static void validarHora(LocalTime horaInicio, String mensaje){
+	    if(horaInicio.isBefore(horaInicial) || horaInicio.isAfter(horaFinal)){
+	        throw new ExcepcionHoraInvalida(mensaje);
         }
     }
     

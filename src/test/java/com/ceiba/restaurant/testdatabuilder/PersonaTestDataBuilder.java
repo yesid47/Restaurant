@@ -1,6 +1,7 @@
 package com.ceiba.restaurant.testdatabuilder;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
+import com.ceiba.restaurant.dominio.Persona;
 
 public class PersonaTestDataBuilder {
 
@@ -23,6 +24,10 @@ public class PersonaTestDataBuilder {
         this.direccion= DIRECCION;
         this.celular = CELULAR;
         this.cedula = CEDULA;
+    }
+
+    public Persona build(){
+        return new Persona(1,this.nombre,this.cedula,this.celular,this.email,this.direccion);
     }
 
     public ComandoPersona buildComando(){

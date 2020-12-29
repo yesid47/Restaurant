@@ -62,14 +62,22 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
 
     @Override
     public Persona obtenerPorCedula(String cedula) {
-        PersonaEntity personaEntity = obtenerPersonaEntityPorCedula(cedula);
-        return PersonaBuilder.convertirADominio(personaEntity);
+        try {
+            PersonaEntity personaEntity = obtenerPersonaEntityPorCedula(cedula);
+            return PersonaBuilder.convertirADominio(personaEntity);
+        }catch (Exception e){
+            return null;
+        }
     }
 
     private PersonaEntity obtenerPersonaEntityPorCedula(String cedula) {
-        Query query = entityManager.createQuery(OBTENER_PERSONA);
-        query.setParameter("cedula", cedula);
+        try {
+            Query query = entityManager.createQuery(OBTENER_PERSONA);
+            query.setParameter("cedula", cedula);
 
-        return (PersonaEntity) query.getSingleResult();
+            return (PersonaEntity) query.getSingleResult();
+        }catch(Exception e){
+            return null;
+        }
     }
 }

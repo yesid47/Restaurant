@@ -57,14 +57,23 @@ public class RepositorioMesaPersistente implements RepositorioMesa {
 
     @Override
     public Mesa obtenerPorNumero(int numero) {
-        MesaEntity mesaEntity = obtenerMesaEntityPorNumero(numero);
-        return MesaBuilder.convertirADominio(mesaEntity);
+        try {
+            MesaEntity mesaEntity = obtenerMesaEntityPorNumero(numero);
+            return MesaBuilder.convertirADominio(mesaEntity);
+        }catch (Exception e){
+            return null;
+        }
     }
 
     private MesaEntity obtenerMesaEntityPorNumero(int numero) {
-        Query query = entityManager.createQuery(FIND_BY_NUMERO);
-        query.setParameter("numero",numero);
 
-        return (MesaEntity) query.getSingleResult();
+        try {
+            Query query = entityManager.createQuery(FIND_BY_NUMERO);
+            query.setParameter("numero", numero);
+
+            return (MesaEntity) query.getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
     }
 }

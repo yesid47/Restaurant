@@ -22,7 +22,7 @@ public class RepositorioReservaPersistente implements RepositorioReserva {
     private static final String FIND_ALL="SELECT reserva FROM reserva as reserva";
     private static final String disponibilidadMesa=
             "SELECT reserva FROM reserva as reserva WHERE reserva.fecha = :fecha and reserva.mesa = :id_mesa and (reserva.hora_final BETWEEN :horaInicial and :horaFinal or reserva.hora_inicial BETWEEN :horaInicial and :horaFinal)";
-    private static final String ACTUALIZAR_ESTADO = "UPDATE reserva set reserva.estado= 'false' where reserva.fecha = :fecha and reserva.hora_final <= :horaFinal";
+    private static final String ACTUALIZAR_ESTADO = "UPDATE reserva SET estado = 'false' WHERE (fecha = :fechaActual AND hora_Final <= :horaActual) OR (fecha <= :fechaActual)";
 
     private EntityManager entityManager;
 
@@ -73,11 +73,11 @@ public class RepositorioReservaPersistente implements RepositorioReserva {
 
     @Override
     public void actualizarEstado(LocalDate fechaActual, LocalTime horaActual) {
-        Query query = entityManager.createQuery(ACTUALIZAR_ESTADO);
+        Query query = entityManager.createNativeQuery(ACTUALIZAR_ESTADO);
         query.setParameter("fechaActual", fechaActual);
         query.setParameter("horaActual", horaActual);
 
-        query.getSingleResult();
+        query.executeUpdate();
     }
 
 }

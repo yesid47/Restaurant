@@ -1,9 +1,16 @@
 package com.ceiba.restaurant.dominio.unitaria;
 
-
+import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.ValidadorArgumento;
+import com.ceiba.restaurant.testdatabuilder.MesaTestDataBuilder;
+import com.ceiba.restaurant.testdatabuilder.PersonaTestDataBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,11 +23,20 @@ public class ReservaTest {
     private static final LocalDate fechaJueves = LocalDate.parse("2021-01-07");
     private static final LocalDate fechaDomingo = LocalDate.parse("2021-01-03");
     private static final double precioMesa = 20000;
+
     private Reserva reserva;
+    private Persona persona;
+    private Mesa mesa;
+
+   // @Mock
+    private ValidadorArgumento validadorArgumento;
 
     @BeforeEach
     public void inicializarReserva(){
-        this.reserva = new Reserva();
+        mesa = new MesaTestDataBuilder().build();
+        persona = new PersonaTestDataBuilder().build();
+        reserva= new Reserva(1,fechaJueves,horaInicial,persona,mesa);
+        //MockitoAnnotations.initMocks(this);
     }
 
     @Test
@@ -51,12 +67,25 @@ public class ReservaTest {
         assertTrue(valor);
     }
 
-   /* @Test
+   @Test
     public void calcularValorAPagarDomingo(){
         //arrange
         //act
         double valorAPagar = this.reserva.calcularValorApagar(precioMesa, fechaDomingo);
+        double valorEsperado= 40000;
+        //assert
+       assertEquals(valorEsperado,valorAPagar,0.0);
 
+    }
 
-    }*/
+    @Test
+    public void calcularValorAPagarJueves(){
+        //arrange
+        //act
+        double valorAPagar = this.reserva.calcularValorApagar(precioMesa, fechaJueves);
+        double valorEsperado= 10000;
+        //assert
+        assertEquals(valorEsperado,valorAPagar,0.0);
+
+    }
 }

@@ -1,6 +1,9 @@
 package com.ceiba.restaurant.aplicacion.comando;
 
 
+import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.Persona;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -9,14 +12,14 @@ public class ComandoReserva {
     private long idReserva;
     private LocalDate fecha;
     private LocalTime horaInicio;
-    private String persona;
-    private int mesa;
+    private ComandoPersona persona;
+    private ComandoMesa mesa;
 
     public ComandoReserva(){
         super();
     }
 
-    public ComandoReserva(LocalDate fecha, LocalTime horaInicio, String persona, int mesa) {
+    public ComandoReserva(LocalDate fecha, LocalTime horaInicio, ComandoPersona persona, ComandoMesa mesa) {
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.persona = persona;
@@ -35,11 +38,11 @@ public class ComandoReserva {
         return idReserva;
     }
 
-    public String getPersona() {
+    public ComandoPersona getPersona() {
         return persona;
     }
 
-    public int getMesa() {
+    public ComandoMesa getMesa() {
         return mesa;
     }
 }

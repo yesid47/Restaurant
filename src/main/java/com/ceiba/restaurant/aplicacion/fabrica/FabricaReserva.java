@@ -6,18 +6,24 @@ import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.Reserva;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Component
 public class FabricaReserva {
 
-    public Reserva crear(ComandoReserva comandoReserva, Persona persona, Mesa mesa){
+    private final FabricaMesa fabricaMesa;
+    private final FabricaPersona fabricaPersona;
 
-        //LocalDate fecha = LocalDate.parse(comandoReserva.getFecha());
-        //LocalTime horaInicio = LocalTime.parse(comandoReserva.getHoraInicio());
-        //Persona persona = ;
+    public FabricaReserva(FabricaMesa fabricaMesa, FabricaPersona fabricaPersona) {
+        this.fabricaMesa = fabricaMesa;
+        this.fabricaPersona = fabricaPersona;
+    }
+
+
+    public Reserva crear(ComandoReserva comandoReserva){
+
+        Persona persona = this.fabricaPersona.crear(comandoReserva.getPersona());
+        Mesa mesa = this.fabricaMesa.crear(comandoReserva.getMesa());
+
         return new Reserva(comandoReserva.getIdReserva(),comandoReserva.getFecha(),comandoReserva.getHoraInicio(),persona,mesa);
     }
 

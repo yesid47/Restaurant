@@ -30,9 +30,7 @@ public class ManejadorCrearReserva {
 
     @Transactional
     public void ejecutar(ComandoReserva comandoReserva){
-        Persona persona = this.servicioBuscarPersona.ejecutar(comandoReserva.getPersona());
-        Mesa mesa = this.servicioBuscarMesa.ejecutar(comandoReserva.getMesa());
-        Reserva reserva = this.fabricaReserva.crear(comandoReserva, persona, mesa);
+        Reserva reserva = this.fabricaReserva.crear(comandoReserva);
         this.servicioCrearReserva.ejecutar(reserva);
     }
 

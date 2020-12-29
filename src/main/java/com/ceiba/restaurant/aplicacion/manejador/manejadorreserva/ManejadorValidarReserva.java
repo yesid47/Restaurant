@@ -29,9 +29,9 @@ public class ManejadorValidarReserva {
 
     @Transactional
     public boolean ejecutar(ComandoReserva comandoReserva){
-        Persona persona = this.servicioBuscarPersona.ejecutar(comandoReserva.getPersona());
-        Mesa mesa = this.servicioBuscarMesa.ejecutar(comandoReserva.getMesa());
-        Reserva reserva = this.fabricaReserva.crear(comandoReserva, persona, mesa);
+        //Persona persona = this.servicioBuscarPersona.ejecutar(comandoReserva.getPersona());
+        //Mesa mesa = this.servicioBuscarMesa.ejecutar(comandoReserva.getMesa());
+        Reserva reserva = this.fabricaReserva.crear(comandoReserva);
         return this.servicioValidarReserva.ejecutar(reserva);
     }
 }

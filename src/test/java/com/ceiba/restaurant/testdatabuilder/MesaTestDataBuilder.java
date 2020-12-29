@@ -1,6 +1,7 @@
 package com.ceiba.restaurant.testdatabuilder;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoMesa;
+import com.ceiba.restaurant.dominio.Mesa;
 
 public class MesaTestDataBuilder {
     private static final int CAPACIDAD = 5;
@@ -15,6 +16,10 @@ public class MesaTestDataBuilder {
         this.capacidad = CAPACIDAD;
         this.numeroMesa = NUMEROMESA;
         this.precio = PRECIO;
+    }
+
+    public Mesa build(){
+        return new Mesa(1,2,1,10000);
     }
 
     public ComandoMesa buildComando(){
