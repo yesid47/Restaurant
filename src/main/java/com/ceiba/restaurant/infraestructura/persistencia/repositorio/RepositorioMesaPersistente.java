@@ -73,6 +73,7 @@ public class RepositorioMesaPersistente implements RepositorioMesa {
 
             return (MesaEntity) query.getSingleResult();
         }catch (Exception e){
+
             return null;
         }
     }

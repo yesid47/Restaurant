@@ -66,18 +66,18 @@ public class Reserva {
 
 
     public double calcularValorApagar(double precioMesa, LocalDate fecha) {
-        double valorAPagar = 0;
+        double valorPagar = 0;
         if(calcularSiEsJueves(fecha)){
-            valorAPagar = precioMesa*TARIFA_JUEVES;
+            valorPagar = precioMesa*TARIFA_JUEVES;
         }
         else if(calcularSiEsDomingo(fecha)){
-            valorAPagar = precioMesa*TARIFA_DOMINGO;
+            valorPagar = precioMesa*TARIFA_DOMINGO;
         }
         else{
-            valorAPagar = precioMesa;
+            valorPagar = precioMesa;
         }
 
-        return valorAPagar;
+        return valorPagar;
     }
 
 

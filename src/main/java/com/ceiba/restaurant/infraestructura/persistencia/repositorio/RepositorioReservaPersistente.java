@@ -20,7 +20,7 @@ import java.util.List;
 public class RepositorioReservaPersistente implements RepositorioReserva {
 
     private static final String FIND_ALL="SELECT reserva FROM reserva as reserva";
-    private static final String disponibilidadMesa=
+    private static final String DISPONIBILIDAD_MESA=
             "SELECT reserva FROM reserva as reserva WHERE reserva.fecha = :fecha and reserva.mesa = :id_mesa and (reserva.hora_final BETWEEN :horaInicial and :horaFinal or reserva.hora_inicial BETWEEN :horaInicial and :horaFinal)";
     private static final String ACTUALIZAR_ESTADO = "UPDATE reserva SET estado = 'false' WHERE (fecha = :fechaActual AND hora_Final <= :horaActual) OR (fecha <= :fechaActual)";
 
@@ -63,7 +63,7 @@ public class RepositorioReservaPersistente implements RepositorioReserva {
     @Override
     public boolean validarDisponibilidad(LocalDate fecha, LocalTime horaInicial, LocalTime horaFinal, Mesa mesa) {
         MesaEntity mesaEntity = MesaBuilder.convertirAEntity(mesa);
-        Query query = entityManager.createQuery(disponibilidadMesa);
+        Query query = entityManager.createQuery(DISPONIBILIDAD_MESA);
         query.setParameter("fecha",fecha);
         query.setParameter("id_mesa",mesaEntity);
         query.setParameter("horaInicial",horaInicial);

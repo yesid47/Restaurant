@@ -1,9 +1,5 @@
 package com.ceiba.restaurant.aplicacion.comando;
 
-
-import com.ceiba.restaurant.dominio.Mesa;
-import com.ceiba.restaurant.dominio.Persona;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 

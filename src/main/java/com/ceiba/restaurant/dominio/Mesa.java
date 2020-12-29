@@ -13,9 +13,6 @@ public class Mesa {
     private int numeroMesa;
     private double precio;
 
-    public Mesa(){
-        super();
-    }
 
     public Mesa(int idMesa, int capacidadPersonas, int numeroMesa, double precio) {
 

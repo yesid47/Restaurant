@@ -36,7 +36,6 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
 
     private PersonaEntity obtenerPersonaEntityPorId(long id) {
         PersonaEntity query = entityManager.find(PersonaEntity.class,id);
-
         return query;
     }
 
