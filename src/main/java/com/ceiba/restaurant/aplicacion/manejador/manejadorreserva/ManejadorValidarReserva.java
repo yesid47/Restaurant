@@ -2,11 +2,7 @@ package com.ceiba.restaurant.aplicacion.manejador.manejadorreserva;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoReserva;
 import com.ceiba.restaurant.aplicacion.fabrica.FabricaReserva;
-import com.ceiba.restaurant.dominio.Mesa;
-import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.Reserva;
-import com.ceiba.restaurant.dominio.servicio.mesa.ServicioBuscarMesa;
-import com.ceiba.restaurant.dominio.servicio.persona.ServicioBuscarPersona;
 import com.ceiba.restaurant.dominio.servicio.reserva.ServicioValidarReserva;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

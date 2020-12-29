@@ -25,11 +25,11 @@ public class ReservaEntity {
     @Column(name = "fecha", nullable = false )
     private LocalDate fecha;
     @Column(name = "hora_inicial", nullable = false)
-    private LocalTime hora_inicial;
+    private LocalTime horaInicial;
     @Column(name = "hora_final", nullable = false)
-    private LocalTime hora_final;
+    private LocalTime horaFinal;
     @Column(name = "valor_pagar", nullable = false)
-    private double valor_pagar;
+    private double valorPagar;
     @Column(name = "estado", nullable = false)
     private boolean estado;
 
@@ -66,27 +66,27 @@ public class ReservaEntity {
     }
 
     public LocalTime getHoraInicial() {
-        return hora_inicial;
+        return horaInicial;
     }
 
-    public void setHoraInicial(LocalTime hora_inicial) {
-        this.hora_inicial = hora_inicial;
+    public void setHoraInicial(LocalTime horaInicial) {
+        this.horaInicial = horaInicial;
     }
 
     public LocalTime getHoraFinal() {
-        return hora_final;
+        return horaFinal;
     }
 
     public void setHoraFinal(LocalTime horaFinal) {
-        this.hora_final = horaFinal;
+        this.horaFinal = horaFinal;
     }
 
-    public double getValor_pagar() {
-        return valor_pagar;
+    public double getValorPagar() {
+        return valorPagar;
     }
 
-    public void setValor_pagar(double valor_pagar) {
-        this.valor_pagar = valor_pagar;
+    public void setValorPagar(double valorPagar) {
+        this.valorPagar = valorPagar;
     }
 
     public boolean getEstado() {

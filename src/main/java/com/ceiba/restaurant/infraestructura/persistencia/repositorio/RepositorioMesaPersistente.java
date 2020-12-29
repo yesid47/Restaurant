@@ -34,8 +34,7 @@ public class RepositorioMesaPersistente implements RepositorioMesa {
     }
 
     private MesaEntity obtenerMesaEntityPorId(int id) {
-        MesaEntity query = entityManager.find(MesaEntity.class,id);
-        return query;
+        return entityManager.find(MesaEntity.class,id);
     }
 
     @Override
