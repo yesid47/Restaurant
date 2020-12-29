@@ -3,11 +3,7 @@ package com.ceiba.restaurant.dominio;
 import com.ceiba.restaurant.dominio.excepcion.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,21 +40,10 @@ public final class ValidadorArgumento {
             throw new ExcepcionLongitudValor(mensaje);
         }
     }
-    
-    public static <T> void validarNoVacio(List<T> lista, String mensaje) {
-        if (lista.isEmpty()) {
-            throw new ExcepcionValorObligatorio(mensaje);
-        }
-    }
+
 
     public static void validarPositivo(Double valor, String mensaje) {
         if (valor <= 0) {
-            throw new ExcepcionValorInvalido(mensaje);
-        }
-    }
-
-    public static void validarIgual(Double valor, Double valorEsperado, String mensaje) {
-        if (!valor.equals(valorEsperado)) {
             throw new ExcepcionValorInvalido(mensaje);
         }
     }
@@ -69,17 +54,6 @@ public final class ValidadorArgumento {
         }
     }
 
-    public static void validarMenor(LocalDateTime fechaInicial, LocalDateTime fechaFinal, String mensaje) {
-        if (fechaInicial.toLocalDate().isAfter(fechaFinal.toLocalDate())) {
-            throw new ExcepcionValorInvalido(mensaje);
-        }
-    }
-
-    public static void validarMenor(Long numeroInicial, Long numeroFinal, String mensaje) {
-        if (numeroInicial > numeroFinal) {
-            throw new ExcepcionValorInvalido(mensaje);
-        }
-    }
 
     public static void validarRegex(String correoElectronico, String regex, String mensaje) {
         Pattern pattern = Pattern.compile(regex);
@@ -90,20 +64,6 @@ public final class ValidadorArgumento {
         }
     }
 
-    public static <E extends Enum<E>> E validarValido(String valor, Class<E> enumAObtener, String mensaje) {
-        E enumObtenido = null;
-        if(null != valor) {
-            Optional<E> resultadoOpcional = Arrays.stream(enumAObtener.getEnumConstants())
-                    .filter(resultado -> resultado.toString().equals(valor)).findFirst();
-
-            if (resultadoOpcional.isPresent()) {
-                enumObtenido = resultadoOpcional.get();
-            } else {
-                throw new ExcepcionValorInvalido(mensaje);
-            }
-        }
-        return enumObtenido;
-    }
 
     public static void validarNumerico(String valor,String mensaje) {
         try {

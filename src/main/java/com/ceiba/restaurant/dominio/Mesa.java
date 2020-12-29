@@ -1,12 +1,14 @@
 package com.ceiba.restaurant.dominio;
 
 import static com.ceiba.restaurant.dominio.ValidadorArgumento.validarObligatorio;
+import static com.ceiba.restaurant.dominio.ValidadorArgumento.validarPositivo;
 
 public class Mesa {
 
     private static final String SE_DEBE_INGRESAR_LA_CAPACIDAD_DE_LA_MESA = "Se debe ingresar la capacidad de la mesa";
     private static final String SE_DEBE_INGRESAR_EL_NUMERO_DE_MESA = "Se debe ingresar el numero de mesa";
     private static final String SE_DEBE_INGRESAR_EL_PRECIO_DE_LA_MESA = "Se debe ingresar el precio de la mesa";
+    private static final String EL_VALOR_DE_LA_MESA_DEBE_SER_POSITIVO = "Se debe ingresar el precio de la mesa";
 
     private int idMesa;
     private int capacidadPersonas;
@@ -19,6 +21,7 @@ public class Mesa {
         validarObligatorio(capacidadPersonas,SE_DEBE_INGRESAR_LA_CAPACIDAD_DE_LA_MESA);
         validarObligatorio(numeroMesa,SE_DEBE_INGRESAR_EL_NUMERO_DE_MESA);
         validarObligatorio(precio,SE_DEBE_INGRESAR_EL_PRECIO_DE_LA_MESA);
+        validarPositivo(precio,EL_VALOR_DE_LA_MESA_DEBE_SER_POSITIVO);
 
         this.idMesa = idMesa;
         this.capacidadPersonas = capacidadPersonas;
