@@ -40,7 +40,7 @@ public class RepositorioMesaPersistente implements RepositorioMesa {
     @Override
     public List<Mesa> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
-        ArrayList<Mesa> mesasDominio = new ArrayList<Mesa>();
+        ArrayList<Mesa> mesasDominio = new ArrayList<>();
         ArrayList<MesaEntity> mesas = (ArrayList<MesaEntity>) query.getResultList();
         for (MesaEntity mesa : mesas){
             mesasDominio.add(MesaBuilder.convertirADominio(mesa));

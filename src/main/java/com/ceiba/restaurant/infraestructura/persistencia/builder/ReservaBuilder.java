@@ -7,7 +7,7 @@ import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.ReservaEntity;
 
-public class ReservaBuilder {
+public final class ReservaBuilder {
     ReservaBuilder(){}
 
     public static Reserva convertirADominio(ReservaEntity reservaEntity){

@@ -1,7 +1,6 @@
 package com.ceiba.restaurant.dominio.repositorio;
 
 import com.ceiba.restaurant.dominio.Mesa;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

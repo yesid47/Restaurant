@@ -3,7 +3,7 @@ package com.ceiba.restaurant.infraestructura.persistencia.builder;
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 
-public class MesaBuilder {
+public final class MesaBuilder {
 
     private MesaBuilder(){
 

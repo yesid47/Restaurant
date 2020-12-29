@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ValidadorArgumento {
+public final class ValidadorArgumento {
 
     private static final String LUNES = "MONDAY";
     private static final String MARTES = "TUESDAY";

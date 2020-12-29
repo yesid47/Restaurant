@@ -3,7 +3,7 @@ package com.ceiba.restaurant.infraestructura.persistencia.builder;
 import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 
-public class PersonaBuilder {
+public final class PersonaBuilder {
 
     private PersonaBuilder(){
 

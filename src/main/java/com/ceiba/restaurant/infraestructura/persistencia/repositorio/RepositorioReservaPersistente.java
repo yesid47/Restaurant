@@ -38,8 +38,7 @@ public class RepositorioReservaPersistente implements RepositorioReserva {
     }
 
     public ReservaEntity obtenerEntityPorId(long id){
-        ReservaEntity query = entityManager.find(ReservaEntity.class,id);
-        return query;
+        return entityManager.find(ReservaEntity.class,id);
     }
 
     @Override

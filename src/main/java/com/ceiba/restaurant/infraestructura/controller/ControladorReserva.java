@@ -46,17 +46,10 @@ public class ControladorReserva {
     public List<Reserva> listarTodo(){
         return this.manejadorListarReservas.ejecutar();
     }
-  /*  @GetMapping("/{id}")
-    public Mesa buscar(@PathVariable(name="id") int id){
-        return this.manejadorBuscarMesa.ejecutar(id);
-    }
 
-    @GetMapping("/mesas")
-    public List<Mesa> listarMesas(){
-        return this.manejadorListarMesas.ejecutar();
-    }
 
-    @DeleteMapping("/{id}")
+
+/*    @DeleteMapping("/{id}")
     public void eliminar(@PathVariable(name="id") int id){
 
     }*/

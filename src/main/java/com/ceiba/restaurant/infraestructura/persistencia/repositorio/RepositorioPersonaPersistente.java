@@ -41,7 +41,7 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
     @Override
     public List<Persona> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
-        ArrayList<Persona> listaDominio = new ArrayList<Persona>();
+        ArrayList<Persona> listaDominio = new ArrayList<>();
         ArrayList<PersonaEntity> listaEntity= (ArrayList<PersonaEntity>) query.getResultList();
         for (PersonaEntity persona : listaEntity){
             listaDominio.add(PersonaBuilder.convertirADominio(persona));
