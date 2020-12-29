@@ -14,7 +14,7 @@ public class MesaEntity {
     @Column(name="capacidad", nullable = false)
     private int capacidad;
     @Column(name="numero_mesa", nullable = false, unique = true)
-    private int numero_mesa;
+    private int numeroMesa;
     @Column(name="precio",nullable = false)
     private double precio;
 
@@ -43,10 +43,10 @@ public class MesaEntity {
     }
 
     public int getNumeroMesa() {
-        return numero_mesa;
+        return numeroMesa;
     }
 
-    public void setNumeroMesa(int numero_mesa) {
-        this.numero_mesa = numero_mesa;
+    public void setNumeroMesa(int numeroMesa) {
+        this.numeroMesa = numeroMesa;
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public class RepositorioMesaPersistente implements RepositorioMesa {
     private static final String FIND_ALL ="SELECT mesa FROM mesa as mesa";
-    private static final String FIND_BY_NUMERO = "SELECT mesa FROM mesa as mesa WHERE mesa.numero_mesa = :numero";
+    private static final String FIND_BY_NUMERO = "SELECT mesa FROM mesa as mesa WHERE mesa.numeroMesa = :numero";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ManejadorError.class);
 
@@ -62,13 +62,8 @@ public class RepositorioMesaPersistente implements RepositorioMesa {
 
     @Override
     public Mesa obtenerPorNumero(int numero) {
-        try {
-            MesaEntity mesaEntity = obtenerMesaEntityPorNumero(numero);
-            return MesaBuilder.convertirADominio(mesaEntity);
-        }catch (Exception e){
-            LOGGER.info(e.toString());
-            return null;
-        }
+        MesaEntity mesaEntity = obtenerMesaEntityPorNumero(numero);
+        return MesaBuilder.convertirADominio(mesaEntity);
     }
 
     private MesaEntity obtenerMesaEntityPorNumero(int numero) {

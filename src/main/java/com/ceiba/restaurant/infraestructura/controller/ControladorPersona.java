@@ -1,7 +1,6 @@
 package com.ceiba.restaurant.infraestructura.controller;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
-import com.ceiba.restaurant.aplicacion.manejador.manejadormesa.ManejadorEliminarMesa;
 import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorBuscarPersona;
 import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorCrearPersona;
 import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorEliminarPersona;

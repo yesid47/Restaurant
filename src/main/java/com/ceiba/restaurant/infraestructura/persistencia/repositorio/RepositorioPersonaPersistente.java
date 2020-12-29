@@ -63,13 +63,8 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
 
     @Override
     public Persona obtenerPorCedula(String cedula) {
-        try {
-            PersonaEntity personaEntity = obtenerPersonaEntityPorCedula(cedula);
-            return PersonaBuilder.convertirADominio(personaEntity);
-        }catch (Exception e){
-            LOGGER.info(e.toString());
-            return null;
-        }
+        PersonaEntity personaEntity = obtenerPersonaEntityPorCedula(cedula);
+        return PersonaBuilder.convertirADominio(personaEntity);
     }
 
     private PersonaEntity obtenerPersonaEntityPorCedula(String cedula) {
