@@ -2,11 +2,13 @@ package com.ceiba.restaurant.testdatabuilder;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoMesa;
 import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 
 public class MesaTestDataBuilder {
-    private static final int CAPACIDAD = 5;
-    private static final int NUMEROMESA = 5;
-    private static final double PRECIO = 20000;
+    private static final int id = 1;
+    private static final int CAPACIDAD = 2;
+    private static final int NUMEROMESA = 1;
+    private static final double PRECIO = 10000;
 
     private int capacidad;
     private int numeroMesa;
@@ -19,10 +21,20 @@ public class MesaTestDataBuilder {
     }
 
     public Mesa build(){
-        return new Mesa(1,2,1,10000);
+        return new Mesa(id,this.capacidad,this.numeroMesa,this.precio);
     }
 
     public ComandoMesa buildComando(){
         return new ComandoMesa(capacidad,numeroMesa,precio);
+    }
+
+    public MesaEntity buildEntity(){
+        MesaEntity mesaEntity = new MesaEntity();
+        mesaEntity.setNumeroMesa(this.numeroMesa);
+        mesaEntity.setId(id);
+        mesaEntity.setCapacidad(this.capacidad);
+        mesaEntity.setPrecio(this.precio);
+
+        return mesaEntity;
     }
 }

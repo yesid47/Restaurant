@@ -2,8 +2,7 @@ package com.ceiba.restaurant.dominio.unitaria;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
 import com.ceiba.restaurant.dominio.excepcion.*;
-import org.apache.tomcat.jni.Local;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -44,7 +43,7 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionValorObligatorio e) {
             //assert
-            Assert.assertEquals(CAMPO_REQUERIDO, e.getMessage());
+            Assertions.assertEquals(CAMPO_REQUERIDO, e.getMessage());
         }
     }
 
@@ -56,7 +55,7 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionFechaInvalida e) {
             //assert
-            Assert.assertEquals(SE_DEBE_INGRESAR_UNA_FECHA_VALIDA, e.getMessage());
+            Assertions.assertEquals(SE_DEBE_INGRESAR_UNA_FECHA_VALIDA, e.getMessage());
         }
     }
 
@@ -68,7 +67,7 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionFechaInvalida e) {
             //assert
-            Assert.assertEquals(SE_DEBE_INGRESAR_UNA_FECHA_VALIDA, e.getMessage());
+            Assertions.assertEquals(SE_DEBE_INGRESAR_UNA_FECHA_VALIDA, e.getMessage());
         }
     }
 
@@ -80,7 +79,7 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionFechaInvalida e) {
             //assert
-            Assert.assertEquals(SE_DEBE_INGRESAR_UNA_FECHA_VALIDA, e.getMessage());
+            Assertions.assertEquals(SE_DEBE_INGRESAR_UNA_FECHA_VALIDA, e.getMessage());
         }
     }
 
@@ -92,7 +91,7 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionHoraInvalida e) {
             //assert
-            Assert.assertEquals(SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA, e.getMessage());
+            Assertions.assertEquals(SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA, e.getMessage());
         }
     }
 
@@ -104,7 +103,7 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionHoraInvalida e) {
             //assert
-            Assert.assertEquals(SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA, e.getMessage());
+            Assertions.assertEquals(SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA, e.getMessage());
         }
     }
 
@@ -117,7 +116,7 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionValorInvalido e) {
             //assert
-            Assert.assertEquals(SE_DEBE_INGRESAR_UN_EMAIL_VALIDO, e.getMessage());
+            Assertions.assertEquals(SE_DEBE_INGRESAR_UN_EMAIL_VALIDO, e.getMessage());
         }
     }
 
@@ -132,7 +131,7 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionValorInvalido e) {
             //assert
-            Assert.assertEquals(EL_VALOR_DE_LA_MESA_DEBE_SER_POSITIVO, e.getMessage());
+            Assertions.assertEquals(EL_VALOR_DE_LA_MESA_DEBE_SER_POSITIVO, e.getMessage());
         }
     }
 
@@ -147,25 +146,26 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionLongitudValor e) {
             //assert
-            Assert.assertEquals(EL_NOMBRE_INGRESADO_ES_MUY_CORTO, e.getMessage());
+            Assertions.assertEquals(EL_NOMBRE_INGRESADO_ES_MUY_CORTO, e.getMessage());
         }
     }
 
     @Test
-    void validarLongitudTest(){
+    void validarLongitudInvalidaTest(){
         //arrange
         String nombre = "Pedro";
-        int longitudMaxima = 10;
+        int longitudMinima = 10;
 
         //act
         try {
-            validarLongitud(nombre,longitudMaxima,EL_VALOR_INGRESADO_ES_MUY_LARGO);
+            validarLongitud(nombre,longitudMinima,EL_VALOR_INGRESADO_ES_MUY_LARGO);
             fail();
         }catch (ExcepcionLongitudValor e) {
             //assert
-            Assert.assertEquals(EL_VALOR_INGRESADO_ES_MUY_LARGO, e.getMessage());
+            Assertions.assertEquals(EL_VALOR_INGRESADO_ES_MUY_LARGO, e.getMessage());
         }
     }
+
 
     @Test
     void validarNumericoTest(){
@@ -178,7 +178,7 @@ public class ValidadorArgumentoTest {
             fail();
         }catch (ExcepcionValorInvalido e) {
             //assert
-            Assert.assertEquals(DEBE_SER_UN_VALOR_NUMERICO, e.getMessage());
+            Assertions.assertEquals(DEBE_SER_UN_VALOR_NUMERICO, e.getMessage());
         }
     }
 

@@ -11,9 +11,6 @@ public class ComandoReserva {
     private ComandoPersona persona;
     private ComandoMesa mesa;
 
-    public ComandoReserva(){
-        super();
-    }
 
     public ComandoReserva(LocalDate fecha, LocalTime horaInicio, ComandoPersona persona, ComandoMesa mesa) {
         this.fecha = fecha;

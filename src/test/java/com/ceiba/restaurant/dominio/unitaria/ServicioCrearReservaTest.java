@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class ServicioCrearReservaTest {
 
-    @Test
+   /* @Test
     public void validarDisponibilidadTest(){
 
     }
@@ -18,5 +18,5 @@ public class ServicioCrearReservaTest {
     @Test
     public void validarPersonaExistenteTest(){
 
-    }
+    }*/
 }

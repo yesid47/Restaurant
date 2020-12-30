@@ -2,6 +2,7 @@ package com.ceiba.restaurant.testdatabuilder;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
 import com.ceiba.restaurant.dominio.Persona;
+import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 
 public class PersonaTestDataBuilder {
 
@@ -27,10 +28,21 @@ public class PersonaTestDataBuilder {
     }
 
     public Persona build(){
-        return new Persona(1,this.nombre,this.cedula,this.celular,this.email,this.direccion);
+        return new Persona(ID,this.nombre,this.cedula,this.celular,this.email,this.direccion);
     }
 
     public ComandoPersona buildComando(){
         return new ComandoPersona(this.nombre,this.cedula,this.celular,this.email,this.direccion);
+    }
+
+    public PersonaEntity buildEntity(){
+        PersonaEntity personaEntity = new PersonaEntity();
+        personaEntity.setId(ID);
+        personaEntity.setCedula(this.cedula);
+        personaEntity.setCelular(this.celular);
+        personaEntity.setNombre(this.nombre);
+        personaEntity.setDireccion(this.direccion);
+        personaEntity.setEmail(this.email);
+        return personaEntity;
     }
 }
