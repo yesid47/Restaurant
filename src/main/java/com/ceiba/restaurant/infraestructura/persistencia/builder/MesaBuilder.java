@@ -3,8 +3,8 @@ package com.ceiba.restaurant.infraestructura.persistencia.builder;
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 
-import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.List;
 
 public final class MesaBuilder {
 
@@ -32,9 +32,8 @@ public final class MesaBuilder {
         return mesaEntity;
     }
 
-    public static ArrayList<Mesa> convertirADominio(Query query){
+    public static List<Mesa> convertirADominio(ArrayList<MesaEntity> mesas){
         ArrayList<Mesa> mesasDominio = new ArrayList<>();
-        ArrayList<MesaEntity> mesas = (ArrayList<MesaEntity>) query.getResultList();
         for (MesaEntity mesa : mesas){
             mesasDominio.add(convertirADominio(mesa));
         }

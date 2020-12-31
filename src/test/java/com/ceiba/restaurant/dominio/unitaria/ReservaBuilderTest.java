@@ -24,4 +24,33 @@ public class ReservaBuilderTest {
         Assertions.assertEquals(reservaEsperada.getHoraFinal(),reserva.getHoraFinal());
         Assertions.assertEquals(reservaEsperada.getEstado(),reserva.getEstado());
     }
+
+    @Test
+    public void convertirADominioNULLTest(){
+        //arrange
+        ReservaEntity reservaEntity = null;
+        //act
+        Reserva reserva = ReservaBuilder.convertirADominio(reservaEntity);
+        //assert
+        Assertions.assertNull(reserva);
+    }
+
+
+    @Test
+    public void convertirAEntityTest(){
+        //arrange
+
+        ReservaEntity reservaEntityEsperada = new ReservaTestDataBuilder().buildEntity();
+        Reserva reserva = new ReservaTestDataBuilder().build();
+        //act
+        ReservaEntity reservaEntity = ReservaBuilder.convertirAEntity(reserva);
+        //assert
+        Assertions.assertEquals(reservaEntityEsperada.getId(),reservaEntity.getId());
+        Assertions.assertEquals(reservaEntityEsperada.getFecha(),reservaEntity.getFecha());
+        Assertions.assertEquals(reservaEntityEsperada.getHoraInicial(),reservaEntity.getHoraInicial());
+        Assertions.assertEquals(reservaEntityEsperada.getHoraFinal(),reservaEntity.getHoraFinal());
+        Assertions.assertEquals(reservaEntityEsperada.getEstado(),reservaEntity.getEstado());
+    }
+
+
 }

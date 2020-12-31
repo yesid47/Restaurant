@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -43,7 +44,8 @@ public class RepositorioPersonaPersistente implements RepositorioPersona, Reposi
     @Override
     public List<Persona> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
-       return PersonaBuilder.convertirADominio(query);
+        ArrayList<PersonaEntity> listaEntity= (ArrayList<PersonaEntity>) query.getResultList();
+        return PersonaBuilder.convertirADominio(listaEntity);
     }
 
     @Override

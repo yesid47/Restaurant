@@ -7,7 +7,11 @@ import com.ceiba.restaurant.testdatabuilder.PersonaTestDataBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PersonaBuilderTest {
+
 
     @Test
     public void convertirADominioTest(){
@@ -25,6 +29,16 @@ public class PersonaBuilderTest {
         Assertions.assertEquals(personaEsperada.getDireccion(),persona.getDireccion());
     }
 
+    @Test
+    public void convertirADominioNullTest(){
+        //arrange
+        PersonaEntity personaEntity = null;
+        //act
+        Persona persona = PersonaBuilder.convertirADominio(personaEntity);
+        //assert
+        Assertions.assertNull(persona);
+    }
+
 
     @Test
     public void convertirAEntityTest(){
@@ -40,5 +54,17 @@ public class PersonaBuilderTest {
         Assertions.assertEquals(personaEntityEsperada.getCelular(),personaEntity.getCelular());
         Assertions.assertEquals(personaEntityEsperada.getEmail(),persona.getEmail());
         Assertions.assertEquals(personaEntityEsperada.getDireccion(),personaEntity.getDireccion());
+    }
+
+    @Test
+    public void convertirADominioListTest(){
+        //arrange
+        PersonaEntity personaEntity= new PersonaTestDataBuilder().buildEntity();
+        ArrayList<PersonaEntity> listaEntities= new ArrayList<>();
+        listaEntities.add(personaEntity);
+        //act
+        List<Persona> personas = PersonaBuilder.convertirADominio(listaEntities);
+        //assert
+        Assertions.assertNotNull(personas.get(0));
     }
 }

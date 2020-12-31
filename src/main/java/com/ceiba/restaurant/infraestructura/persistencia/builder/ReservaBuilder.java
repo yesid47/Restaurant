@@ -9,6 +9,7 @@ import com.ceiba.restaurant.infraestructura.persistencia.entidad.ReservaEntity;
 
 import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.List;
 
 public final class ReservaBuilder {
     ReservaBuilder(){}
@@ -42,7 +43,7 @@ public final class ReservaBuilder {
         return reservaEntity;
     }
 
-    public static ArrayList<Reserva> convertirADominio(Query query){
+    public static List<Reserva> convertirADominio(Query query){
 
         ArrayList<Reserva> listaDominio = new ArrayList<>();
 

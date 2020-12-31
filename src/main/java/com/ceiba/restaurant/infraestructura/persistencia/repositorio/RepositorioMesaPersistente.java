@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -42,7 +43,8 @@ public class RepositorioMesaPersistente implements RepositorioMesa, RepositorioM
     @Override
     public List<Mesa> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
-        return MesaBuilder.convertirADominio(query);
+        ArrayList<MesaEntity> mesas = (ArrayList<MesaEntity>) query.getResultList();
+        return MesaBuilder.convertirADominio(mesas);
     }
 
     @Override

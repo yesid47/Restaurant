@@ -3,8 +3,8 @@ package com.ceiba.restaurant.infraestructura.persistencia.builder;
 import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 
-import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.List;
 
 public final class PersonaBuilder {
 
@@ -33,10 +33,9 @@ public final class PersonaBuilder {
         return personaEntity;
     }
 
-    public static ArrayList<Persona> convertirADominio(Query query){
+    public static List<Persona> convertirADominio(ArrayList<PersonaEntity> listaEntity){
 
         ArrayList<Persona> listaDominio = new ArrayList<>();
-        ArrayList<PersonaEntity> listaEntity= (ArrayList<PersonaEntity>) query.getResultList();
         for (PersonaEntity persona : listaEntity){
             listaDominio.add(convertirADominio(persona));
         }
