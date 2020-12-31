@@ -26,7 +26,6 @@ public class ReservaTest {
     private Persona persona;
     private Mesa mesa;
 
-   // @Mock
     private ValidadorArgumento validadorArgumento;
 
     @BeforeEach

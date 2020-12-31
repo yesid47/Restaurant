@@ -2,25 +2,21 @@ package com.ceiba.restaurant.infraestructura.persistencia.repositorio;
 
 import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioPersona;
-import com.ceiba.restaurant.infraestructura.error.ManejadorError;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.PersonaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.ceiba.restaurant.infraestructura.persistencia.repositorio.jpa.RepositorioPersonaJPA;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class RepositorioPersonaPersistente implements RepositorioPersona {
+public class RepositorioPersonaPersistente implements RepositorioPersona, RepositorioPersonaJPA {
 
     private static final String FIND_ALL ="SELECT persona FROM persona as persona";
     private static final String OBTENER_PERSONA = "SELECT persona FROM persona as persona WHERE persona.cedula = :cedula";
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ManejadorError.class);
 
     private EntityManager entityManager;
 
@@ -39,20 +35,15 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
         return PersonaBuilder.convertirADominio(personaEntity);
     }
 
-    private PersonaEntity obtenerPersonaEntityPorId(long id) {
+    @Override
+    public PersonaEntity obtenerPersonaEntityPorId(long id) {
         return entityManager.find(PersonaEntity.class,id);
     }
 
     @Override
     public List<Persona> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
-        ArrayList<Persona> listaDominio = new ArrayList<>();
-        ArrayList<PersonaEntity> listaEntity= (ArrayList<PersonaEntity>) query.getResultList();
-        for (PersonaEntity persona : listaEntity){
-            listaDominio.add(PersonaBuilder.convertirADominio(persona));
-        }
-
-        return listaDominio;
+       return PersonaBuilder.convertirADominio(query);
     }
 
     @Override
@@ -67,15 +58,11 @@ public class RepositorioPersonaPersistente implements RepositorioPersona {
         return PersonaBuilder.convertirADominio(personaEntity);
     }
 
-    private PersonaEntity obtenerPersonaEntityPorCedula(String cedula) {
-        try {
+    @Override
+    public PersonaEntity obtenerPersonaEntityPorCedula(String cedula) {
             Query query = entityManager.createQuery(OBTENER_PERSONA);
             query.setParameter("cedula", cedula);
 
             return (PersonaEntity) query.getSingleResult();
-        }catch(Exception e){
-            LOGGER.info(e.toString());
-            return null;
-        }
     }
 }

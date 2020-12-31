@@ -7,17 +7,17 @@ import com.ceiba.restaurant.infraestructura.persistencia.builder.MesaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.ReservaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.ReservaEntity;
+import com.ceiba.restaurant.infraestructura.persistencia.repositorio.jpa.RepositorioReservaJPA;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class RepositorioReservaPersistente implements RepositorioReserva {
+public class RepositorioReservaPersistente implements RepositorioReserva, RepositorioReservaJPA {
 
     private static final String FIND_ALL="SELECT reserva FROM reserva as reserva";
     private static final String DISPONIBILIDAD_MESA=
@@ -37,6 +37,7 @@ public class RepositorioReservaPersistente implements RepositorioReserva {
         return ReservaBuilder.convertirADominio(reservaEntity);
     }
 
+    @Override
     public ReservaEntity obtenerEntityPorId(long id){
         return entityManager.find(ReservaEntity.class,id);
     }
@@ -50,13 +51,7 @@ public class RepositorioReservaPersistente implements RepositorioReserva {
     @Override
     public List<Reserva> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
-        ArrayList<Reserva> listaDominio = new ArrayList<>();
-        ArrayList<ReservaEntity> listaEntity = (ArrayList<ReservaEntity>) query.getResultList();
-        for (ReservaEntity reserva : listaEntity){
-            listaDominio.add(ReservaBuilder.convertirADominio(reserva));
-        }
-
-        return listaDominio;
+        return ReservaBuilder.convertirADominio(query);
     }
 
     @Override

@@ -6,6 +6,10 @@ public class ComandoMesa {
     private int numeroMesa;
     private double precio;
 
+    public ComandoMesa(){
+
+    }
+
 
     public ComandoMesa(int capacidadPersonas, int numeroMesa, double precio) {
         this.capacidadPersonas = capacidadPersonas;
