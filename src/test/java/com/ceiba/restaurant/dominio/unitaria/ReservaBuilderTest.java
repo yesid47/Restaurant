@@ -1,11 +1,18 @@
 package com.ceiba.restaurant.dominio.unitaria;
 
+import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.infraestructura.persistencia.builder.PersonaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.ReservaBuilder;
+import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.ReservaEntity;
+import com.ceiba.restaurant.testdatabuilder.PersonaTestDataBuilder;
 import com.ceiba.restaurant.testdatabuilder.ReservaTestDataBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReservaBuilderTest {
 
@@ -50,6 +57,18 @@ public class ReservaBuilderTest {
         Assertions.assertEquals(reservaEntityEsperada.getHoraInicial(),reservaEntity.getHoraInicial());
         Assertions.assertEquals(reservaEntityEsperada.getHoraFinal(),reservaEntity.getHoraFinal());
         Assertions.assertEquals(reservaEntityEsperada.getEstado(),reservaEntity.getEstado());
+    }
+
+    @Test
+    public void convertirADominioListaTest(){
+        //arrange
+        ReservaEntity reservaEntity= new ReservaTestDataBuilder().buildEntity();
+        ArrayList<ReservaEntity> listaEntities= new ArrayList<>();
+        listaEntities.add(reservaEntity);
+        //act
+        List<Reserva> reservas = ReservaBuilder.convertirADominio(listaEntities);
+        //assert
+        Assertions.assertNotNull(reservas.get(0));
     }
 
 

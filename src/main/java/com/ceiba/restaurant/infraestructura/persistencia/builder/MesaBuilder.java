@@ -32,7 +32,7 @@ public final class MesaBuilder {
         return mesaEntity;
     }
 
-    public static List<Mesa> convertirADominio(ArrayList<MesaEntity> mesas){
+    public static List<Mesa> convertirADominio(List<MesaEntity> mesas){
         ArrayList<Mesa> mesasDominio = new ArrayList<>();
         for (MesaEntity mesa : mesas){
             mesasDominio.add(convertirADominio(mesa));

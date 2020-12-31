@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -18,8 +19,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@AutoConfigureMockMvc
 @SpringBootTest
+@TestPropertySource(locations = "classpath:test.properties")
+@AutoConfigureMockMvc
 public class ControladorPersonaTest {
 
     @Autowired
@@ -27,7 +29,7 @@ public class ControladorPersonaTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-/*
+
     @Test
     public void agregarPersonaTest() throws Exception
     {
@@ -42,14 +44,14 @@ public class ControladorPersonaTest {
 
 
     @Test
-    public void getPersonaPorIdTest() throws Exception
+    public void getPersonaPorCedulaTest() throws Exception
     {
         mvc.perform( MockMvcRequestBuilders
-                .get("/persona/{id}", 1)
+                .get("/persona/{cedula}", "1045044024")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.idPersona").value(1));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.idPersona").value(20));
     }
 
     @Test
@@ -63,6 +65,5 @@ public class ControladorPersonaTest {
                 .andExpect(status().isOk());
     }
 
-*/
 
 }

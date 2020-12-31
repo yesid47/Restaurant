@@ -33,7 +33,7 @@ public final class PersonaBuilder {
         return personaEntity;
     }
 
-    public static List<Persona> convertirADominio(ArrayList<PersonaEntity> listaEntity){
+    public static List<Persona> convertirADominio(List<PersonaEntity> listaEntity){
 
         ArrayList<Persona> listaDominio = new ArrayList<>();
         for (PersonaEntity persona : listaEntity){

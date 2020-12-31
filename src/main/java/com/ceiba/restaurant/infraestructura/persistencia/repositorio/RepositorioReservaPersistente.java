@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -51,7 +52,8 @@ public class RepositorioReservaPersistente implements RepositorioReserva, Reposi
     @Override
     public List<Reserva> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
-        return ReservaBuilder.convertirADominio(query);
+        ArrayList<ReservaEntity> listaEntity = (ArrayList<ReservaEntity>) query.getResultList();
+        return ReservaBuilder.convertirADominio(listaEntity);
     }
 
     @Override
@@ -62,7 +64,7 @@ public class RepositorioReservaPersistente implements RepositorioReserva, Reposi
         query.setParameter("id_mesa",mesaEntity);
         query.setParameter("horaInicial",horaInicial);
         query.setParameter("horaFinal",horaFinal);
-        return  (query.getResultList().size()>0);
+        return  (ReservaBuilder.convertirABool(query.getResultList()));
     }
 
     @Override

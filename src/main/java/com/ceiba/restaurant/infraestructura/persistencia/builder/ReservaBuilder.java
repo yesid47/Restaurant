@@ -7,7 +7,6 @@ import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.ReservaEntity;
 
-import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,15 +42,18 @@ public final class ReservaBuilder {
         return reservaEntity;
     }
 
-    public static List<Reserva> convertirADominio(Query query){
+    public static List<Reserva> convertirADominio(List<ReservaEntity> listaEntity){
 
         ArrayList<Reserva> listaDominio = new ArrayList<>();
 
-        ArrayList<ReservaEntity> listaEntity = (ArrayList<ReservaEntity>) query.getResultList();
         for (ReservaEntity reserva : listaEntity){
             listaDominio.add(convertirADominio(reserva));
         }
 
         return listaDominio;
+    }
+
+    public static boolean convertirABool(List<ReservaEntity> lista){
+        return lista.size()>0;
     }
 }
