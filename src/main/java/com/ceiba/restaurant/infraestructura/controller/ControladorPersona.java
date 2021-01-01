@@ -1,10 +1,7 @@
 package com.ceiba.restaurant.infraestructura.controller;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorBuscarPersona;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorCrearPersona;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorEliminarPersona;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.ManejadorListarPersonas;
+import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.*;
 import com.ceiba.restaurant.dominio.Persona;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +15,14 @@ public class ControladorPersona {
     private final ManejadorListarPersonas manejadorListarPersonas;
     private final ManejadorBuscarPersona manejadorBuscarPersona;
     private final ManejadorEliminarPersona manejadorEliminarPersona;
+    private final ManejadorActualizarPersona manejadorActualizarPersona;
 
-    public ControladorPersona(ManejadorCrearPersona manejadorCrearPersona, ManejadorListarPersonas manejadorListarPersonas, ManejadorBuscarPersona manejadorBuscarPersona, ManejadorEliminarPersona manejadorEliminarPersona){
+    public ControladorPersona(ManejadorCrearPersona manejadorCrearPersona, ManejadorListarPersonas manejadorListarPersonas, ManejadorBuscarPersona manejadorBuscarPersona, ManejadorEliminarPersona manejadorEliminarPersona, ManejadorActualizarPersona manejadorActualizarPersona){
         this.manejadorCrearPersona= manejadorCrearPersona;
         this.manejadorListarPersonas = manejadorListarPersonas;
         this.manejadorBuscarPersona = manejadorBuscarPersona;
         this.manejadorEliminarPersona = manejadorEliminarPersona;
+        this.manejadorActualizarPersona = manejadorActualizarPersona;
     }
 
     @PostMapping
@@ -50,5 +49,11 @@ public class ControladorPersona {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable(name="id") long id){
         this.manejadorEliminarPersona.ejecutar(id);
+    }
+
+    @PutMapping("/{id}")
+    public void actualizar(@RequestBody ComandoPersona comandoPersona,@PathVariable(name="id") long id){
+        comandoPersona.setIdPersona(id);
+        this.manejadorActualizarPersona.ejecutar(comandoPersona);
     }
 }

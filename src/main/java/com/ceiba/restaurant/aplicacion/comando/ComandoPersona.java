@@ -43,4 +43,12 @@ public class ComandoPersona {
     public String getDireccion() {
         return direccion;
     }
+
+    public void setIdPersona(long idPersona) {
+        this.idPersona = idPersona;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
 }

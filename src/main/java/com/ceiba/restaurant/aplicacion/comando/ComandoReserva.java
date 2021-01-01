@@ -41,4 +41,8 @@ public class ComandoReserva {
     public ComandoMesa getMesa() {
         return mesa;
     }
+
+    public void setIdReserva(long idReserva) {
+        this.idReserva = idReserva;
+    }
 }

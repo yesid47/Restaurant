@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 public class ServicioListarMesas {
-    private RepositorioMesa repositorioMesa;
+    private final RepositorioMesa repositorioMesa;
 
     public ServicioListarMesas(RepositorioMesa repositorioMesa){
         this.repositorioMesa = repositorioMesa;

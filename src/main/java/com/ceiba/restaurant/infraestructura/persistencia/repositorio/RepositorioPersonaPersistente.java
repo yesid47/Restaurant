@@ -61,10 +61,15 @@ public class RepositorioPersonaPersistente implements RepositorioPersona, Reposi
     }
 
     @Override
+    public void actualizar(Persona persona) {
+        entityManager.merge(PersonaBuilder.convertirAEntity(persona));
+    }
+
+    @Override
     public PersonaEntity obtenerPersonaEntityPorCedula(String cedula) {
             Query query = entityManager.createQuery(OBTENER_PERSONA);
             query.setParameter("cedula", cedula);
 
-            return (PersonaEntity) query.getSingleResult();
+            return (PersonaEntity) query.getResultList().stream().findFirst().orElse(null);
     }
 }

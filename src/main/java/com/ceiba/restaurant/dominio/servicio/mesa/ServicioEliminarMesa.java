@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ServicioEliminarMesa {
 
-    private RepositorioMesa repositorioMesa;
+    private final RepositorioMesa repositorioMesa;
 
     public ServicioEliminarMesa(RepositorioMesa repositorioMesa) {
         this.repositorioMesa = repositorioMesa;

@@ -34,6 +34,7 @@ public class ControladorPersonaTest {
     public void agregarPersonaTest() throws Exception
     {
         ComandoPersona comandoPersona = new PersonaTestDataBuilder().buildComando();
+        comandoPersona.setCedula("3603389");
         mvc.perform( MockMvcRequestBuilders
                 .post("/persona")
                 .content(objectMapper.writeValueAsString(comandoPersona))
@@ -55,6 +56,17 @@ public class ControladorPersonaTest {
     }
 
     @Test
+    public void getPersonaPorIdTest() throws Exception
+    {
+        mvc.perform( MockMvcRequestBuilders
+                .get("/persona/id/{id}", 20)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.idPersona").value(20));
+    }
+
+    @Test
     public void listarPersonasTest() throws Exception
     {
 
@@ -64,6 +76,31 @@ public class ControladorPersonaTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+
+
+    @Test
+    public void deletePersonaPorIdTest() throws Exception
+    {
+        mvc.perform( MockMvcRequestBuilders
+                .delete("/persona/{id}", 30)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void actualizarPersonaTest() throws Exception
+    {
+        ComandoPersona comandoPersona = new PersonaTestDataBuilder().buildComando();
+        mvc.perform( MockMvcRequestBuilders
+                .put("/persona/{id}",10)
+                .content(objectMapper.writeValueAsString(comandoPersona))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
 
 
 }

@@ -6,9 +6,9 @@ import com.ceiba.restaurant.dominio.Reserva;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaInexistente;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaReservada;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionPersonaInexistente;
+import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
+import com.ceiba.restaurant.dominio.repositorio.RepositorioPersona;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioReserva;
-import com.ceiba.restaurant.dominio.servicio.mesa.ServicioBuscarMesa;
-import com.ceiba.restaurant.dominio.servicio.persona.ServicioBuscarPersona;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,21 +19,20 @@ public class ServicioCrearReserva {
     private static final String LA_MESA_NO_EXISTE = "La mesa no existe";
     private static final String LA_PERSONA_NO_EXISTE = "La persona no existe";
 
-    private RepositorioReserva repositorioReserva;
-    private ServicioBuscarMesa servicioBuscarMesa;
-    private ServicioBuscarPersona servicioBuscarPersona;
+    private final RepositorioReserva repositorioReserva;
+    private final RepositorioMesa repositorioMesa;
+    private final RepositorioPersona repositorioPersona;
 
-    public ServicioCrearReserva(RepositorioReserva repositorioReservaPersistente, ServicioBuscarPersona servicioBuscarPersona, ServicioBuscarMesa servicioBuscarMesa){
-        this.repositorioReserva = repositorioReservaPersistente;
-        this.servicioBuscarMesa = servicioBuscarMesa;
-        this.servicioBuscarPersona = servicioBuscarPersona;
-
+    public ServicioCrearReserva(RepositorioReserva repositorioReserva, RepositorioMesa repositorioMesa, RepositorioPersona repositorioPersona){
+        this.repositorioReserva = repositorioReserva;
+        this.repositorioMesa = repositorioMesa;
+        this.repositorioPersona = repositorioPersona;
     }
 
     public void ejecutar(Reserva reserva){
 
-        Mesa mesa = this.servicioBuscarMesa.ejecutar(reserva.getMesa().getNumeroMesa());
-        Persona persona = this.servicioBuscarPersona.ejecutar(reserva.getPersona().getCedula());
+        Mesa mesa = this.repositorioMesa.obtenerPorNumero(reserva.getMesa().getNumeroMesa());
+        Persona persona = this.repositorioPersona.obtenerPorCedula(reserva.getPersona().getCedula());
 
         validarMesaExistente(mesa);
         validarPersonaExistente(persona);
@@ -45,19 +44,19 @@ public class ServicioCrearReserva {
 
     }
 
-    public void validarDisponibilidad(Reserva reserva, Mesa mesa){
+    private void validarDisponibilidad(Reserva reserva, Mesa mesa){
         if(this.repositorioReserva.validarDisponibilidad(reserva.getFecha(),reserva.getHoraInicio(),reserva.getHoraFinal(),mesa)){
             throw new ExcepcionMesaReservada(LA_MESA_ESTA_OCUPADA);
         }
     }
 
-    public void validarMesaExistente(Mesa mesa){
+    private void validarMesaExistente(Mesa mesa){
         if(mesa == null){
             throw new ExcepcionMesaInexistente(LA_MESA_NO_EXISTE);
         }
     }
 
-    public void validarPersonaExistente(Persona persona){
+    private void validarPersonaExistente(Persona persona){
         if(persona == null){
             throw new ExcepcionPersonaInexistente(LA_PERSONA_NO_EXISTE);
         }

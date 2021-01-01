@@ -4,17 +4,16 @@ import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioPersona;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
-public class ServicioListarPersonas {
+public class ServicioActualizarPersona {
+
     private final RepositorioPersona repositorioPersona;
 
-    public ServicioListarPersonas(RepositorioPersona repositorioPersona){
+    public ServicioActualizarPersona(RepositorioPersona repositorioPersona) {
         this.repositorioPersona = repositorioPersona;
     }
 
-    public List<Persona> ejecutar(){
-        return this.repositorioPersona.listarTodo();
+    public void ejecutar(Persona persona){
+        this.repositorioPersona.actualizar(persona);
     }
 }

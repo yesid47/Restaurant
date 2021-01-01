@@ -32,4 +32,12 @@ public class ComandoMesa {
     public int getIdMesa() {
         return idMesa;
     }
+
+    public void setIdMesa(int idMesa) {
+        this.idMesa = idMesa;
+    }
+
+    public void setNumeroMesa(int numeroMesa) {
+        this.numeroMesa = numeroMesa;
+    }
 }

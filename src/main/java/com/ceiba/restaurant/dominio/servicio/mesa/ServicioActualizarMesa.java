@@ -5,15 +5,17 @@ import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ServicioBuscarMesa {
+public class ServicioActualizarMesa {
 
     private final RepositorioMesa repositorioMesa;
 
-    public ServicioBuscarMesa(RepositorioMesa repositorioMesa){
+    public ServicioActualizarMesa(RepositorioMesa repositorioMesa) {
         this.repositorioMesa = repositorioMesa;
     }
 
-    public Mesa ejecutar(int numero){
-        return this.repositorioMesa.obtenerPorNumero(numero);
+    public void ejecutar(Mesa mesa){
+        this.repositorioMesa.actualizar(mesa);
     }
+
+
 }

@@ -9,9 +9,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ServicioValidarReserva {
-    private RepositorioReserva repositorioReserva;
+    private final RepositorioReserva repositorioReserva;
+    private final ServicioBuscarMesa servicioBuscarMesa;
+
     private static final String LA_MESA_NO_EXISTE = "La mesa no existe";
-    private ServicioBuscarMesa servicioBuscarMesa;
 
     public ServicioValidarReserva(RepositorioReserva repositorioReserva, ServicioBuscarMesa servicioBuscarMesa){
         this.repositorioReserva = repositorioReserva;

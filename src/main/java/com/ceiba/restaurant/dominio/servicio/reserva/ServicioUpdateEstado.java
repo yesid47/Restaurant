@@ -9,7 +9,7 @@ import java.time.LocalTime;
 @Component
 public class ServicioUpdateEstado {
 
-    RepositorioReserva repositorioReserva;
+    private final RepositorioReserva repositorioReserva;
 
     public ServicioUpdateEstado(RepositorioReserva repositorioReserva){
         this.repositorioReserva = repositorioReserva;

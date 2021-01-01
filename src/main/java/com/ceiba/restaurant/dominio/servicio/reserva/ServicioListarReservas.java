@@ -9,7 +9,7 @@ import java.util.List;
 @Component
 public class ServicioListarReservas {
 
-    private RepositorioReserva repositorioReserva;
+    private final RepositorioReserva repositorioReserva;
 
     public ServicioListarReservas(RepositorioReserva repositorioReserva){
         this.repositorioReserva = repositorioReserva;

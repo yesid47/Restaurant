@@ -60,11 +60,18 @@ public class RepositorioMesaPersistente implements RepositorioMesa, RepositorioM
     }
 
     @Override
+    public void actualizar(Mesa mesa) {
+
+        entityManager.merge(MesaBuilder.convertirAEntity(mesa));
+
+    }
+
+    @Override
     public MesaEntity obtenerEntityPorNumero(int numero) {
 
             Query query = entityManager.createQuery(FIND_BY_NUMERO);
             query.setParameter("numero", numero);
 
-            return (MesaEntity) query.getSingleResult();
+            return (MesaEntity) query.getResultList().stream().findFirst().orElse(null);
     }
 }

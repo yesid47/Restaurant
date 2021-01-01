@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ServicioBuscarPersona {
-    private RepositorioPersona repositorioPersona;
+    private final RepositorioPersona repositorioPersona;
 
     public ServicioBuscarPersona(RepositorioPersona repositorioPersona){
         this.repositorioPersona = repositorioPersona;

@@ -14,4 +14,6 @@ public interface RepositorioPersona {
     void eliminar(long id);
 
     Persona obtenerPorCedula(String cedula);
+
+    void actualizar(Persona persona);
 }

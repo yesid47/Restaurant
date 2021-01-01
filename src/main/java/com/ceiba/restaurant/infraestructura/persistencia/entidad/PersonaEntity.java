@@ -14,7 +14,7 @@ public class PersonaEntity {
     private String nombre;
     @Column(name="cedula", nullable = false, unique = true )
     private String cedula;
-    @Column(name="celular", nullable = false, unique = true )
+    @Column(name="celular", nullable = false)
     private long celular;
     @Column(name="email", nullable = false)
     private String email;

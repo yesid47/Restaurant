@@ -3,10 +3,10 @@ package com.ceiba.restaurant.dominio.unitaria;
 import org.junit.jupiter.api.Test;
 
 public class ServicioCrearReservaTest {
-
-   /* @Test
+/*
+    @Test
     public void validarDisponibilidadTest(){
-
+        TargetClass.getDeclaredMethod
     }
 
     @Test

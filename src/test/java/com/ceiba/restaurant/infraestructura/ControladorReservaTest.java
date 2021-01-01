@@ -1,8 +1,8 @@
 package com.ceiba.restaurant.infraestructura;
 
-import com.ceiba.restaurant.aplicacion.comando.ComandoMesa;
+import com.ceiba.restaurant.aplicacion.comando.ComandoReserva;
+import com.ceiba.restaurant.testdatabuilder.ReservaTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ceiba.restaurant.testdatabuilder.MesaTestDataBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -22,22 +21,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @TestPropertySource(locations = "classpath:test.properties")
 @AutoConfigureMockMvc
-public class ControladorMesaTest {
+public class ControladorReservaTest {
 
-   @Autowired
+    @Autowired
     private MockMvc mvc;
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Test
-    public void agregarMesaTest() throws Exception
+    public void agregarReservaTest() throws Exception
     {
-        ComandoMesa comandoMesa = new MesaTestDataBuilder().buildComando();
-        comandoMesa.setNumeroMesa(45);
+
+        ComandoReserva comandoReserva = new ReservaTestDataBuilder().buildComando();
+        comandoReserva.getPersona().setCedula("1045044024");
+        comandoReserva.getMesa().setNumeroMesa(40);
         mvc.perform( MockMvcRequestBuilders
-                .post("/mesa")
-                .content(objectMapper.writeValueAsString(comandoMesa))
+                .post("/reserva")
+                .content(objectMapper.writeValueAsString(comandoReserva))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -45,32 +46,21 @@ public class ControladorMesaTest {
 
 
     @Test
-    public void getMesaPorIdTest() throws Exception
-    {
-        mvc.perform( MockMvcRequestBuilders
-                .get("/mesa/{id}", 20)
-                .accept(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.idMesa").value(20));
-    }
-
-   @Test
-    public void listarMesasTest() throws Exception
+    public void listarReservasTest() throws Exception
     {
 
         mvc.perform( MockMvcRequestBuilders
-                .get("/mesa/mesas")
+                .get("/reserva/reservas")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void deleteMesaTest() throws Exception
+    public void deleteReservaTest() throws Exception
     {
         mvc.perform( MockMvcRequestBuilders
-                .delete("/mesa/{numeroMesa}", 30)
+                .delete("/reserva/{id}", 30)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -78,15 +68,33 @@ public class ControladorMesaTest {
     }
 
     @Test
-    public void actualizarMesaTest() throws Exception
+    public void actualizarEstadosTest() throws Exception
     {
-        ComandoMesa comandoMesa = new MesaTestDataBuilder().buildComando();
+
         mvc.perform( MockMvcRequestBuilders
-                .put("/mesa/{id}",10)
-                .content(objectMapper.writeValueAsString(comandoMesa))
+                .get("/reserva/actualizarEstados")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void validarReservaTest() throws Exception
+    {
+        ComandoReserva comandoReserva = new ReservaTestDataBuilder().buildComando();
+        comandoReserva.getPersona().setCedula("1045044024");
+        comandoReserva.getMesa().setNumeroMesa(20);
+        mvc.perform( MockMvcRequestBuilders
+                .post("/reserva")
+                .content(objectMapper.writeValueAsString(comandoReserva))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+    }
+
+
+
+
 
 }

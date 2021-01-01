@@ -15,4 +15,6 @@ public interface RepositorioMesa {
     void eliminar(int numeroMesa);
 
     Mesa obtenerPorNumero(int numero);
+
+    void actualizar(Mesa mesa);
 }
