@@ -3,32 +3,33 @@ package com.ceiba.restaurant.dominio.servicio.reserva;
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.Reserva;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaInexistente;
+import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioReserva;
-import com.ceiba.restaurant.dominio.servicio.mesa.ServicioBuscarMesa;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ServicioValidarReserva {
+
     private final RepositorioReserva repositorioReserva;
-    private final ServicioBuscarMesa servicioBuscarMesa;
+    private final RepositorioMesa repositorioMesa;
 
     private static final String LA_MESA_NO_EXISTE = "La mesa no existe";
 
-    public ServicioValidarReserva(RepositorioReserva repositorioReserva, ServicioBuscarMesa servicioBuscarMesa){
+    public ServicioValidarReserva(RepositorioReserva repositorioReserva, RepositorioMesa repositorioMesa){
         this.repositorioReserva = repositorioReserva;
-        this.servicioBuscarMesa = servicioBuscarMesa;
 
+        this.repositorioMesa = repositorioMesa;
     }
 
     public boolean ejecutar(Reserva reserva){
 
-        Mesa mesa = this.servicioBuscarMesa.ejecutar(reserva.getMesa().getNumeroMesa());
+        Mesa mesa = this.repositorioMesa.obtenerPorNumero(reserva.getMesa().getNumeroMesa());
         validarMesaExistente(mesa);
 
         return this.repositorioReserva.validarDisponibilidad(reserva.getFecha(),reserva.getHoraInicio(),reserva.getHoraFinal(),mesa);
     }
 
-    public void validarMesaExistente(Mesa mesa){
+    private void validarMesaExistente(Mesa mesa){
         if(mesa == null){
             throw new ExcepcionMesaInexistente(LA_MESA_NO_EXISTE);
         }
