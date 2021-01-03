@@ -35,7 +35,6 @@ public class Reserva {
 
     public Reserva(LocalDate fecha, LocalTime horaInicio, LocalTime horaFinal, Persona persona,
                    Mesa mesa, double valorAPagar, boolean estado) {
-        this.idReserva = idReserva;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFinal = horaFinal;
