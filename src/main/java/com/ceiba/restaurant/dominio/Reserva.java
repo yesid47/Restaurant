@@ -33,7 +33,8 @@ public class Reserva {
     private boolean estado;
 
 
-    public Reserva(long idReserva, LocalDate fecha, LocalTime horaInicio, LocalTime horaFinal, Persona persona, Mesa mesa, double valorAPagar, boolean estado) {
+    public Reserva(LocalDate fecha, LocalTime horaInicio, LocalTime horaFinal, Persona persona,
+                   Mesa mesa, double valorAPagar, boolean estado) {
         this.idReserva = idReserva;
         this.fecha = fecha;
         this.horaInicio = horaInicio;

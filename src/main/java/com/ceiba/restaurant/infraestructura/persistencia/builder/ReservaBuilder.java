@@ -19,8 +19,9 @@ public final class ReservaBuilder {
         if(reservaEntity!=null){
             Persona persona = PersonaBuilder.convertirADominio(reservaEntity.getPersona());
             Mesa mesa = MesaBuilder.convertirADominio(reservaEntity.getMesa());
-            reserva = new Reserva(reservaEntity.getId(),reservaEntity.getFecha(),reservaEntity.getHoraInicial(),reservaEntity.getHoraFinal(),
+            reserva = new Reserva(reservaEntity.getFecha(),reservaEntity.getHoraInicial(),reservaEntity.getHoraFinal(),
                     persona,mesa,reservaEntity.getValorPagar(), reservaEntity.getEstado());
+            reserva.setIdReserva(reservaEntity.getId());
         }
 
         return reserva;

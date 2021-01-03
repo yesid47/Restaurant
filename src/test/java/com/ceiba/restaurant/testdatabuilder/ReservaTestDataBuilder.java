@@ -49,7 +49,10 @@ public class ReservaTestDataBuilder {
     }
 
     public Reserva build(){
-        return new Reserva(ID,this.fecha,this.horaInicial,this.horaFinal,PERSONA,MESA,this.valorAPagar,this.estado);
+
+        Reserva reserva=  new Reserva(this.fecha,this.horaInicial,this.horaFinal,PERSONA,MESA,this.valorAPagar,this.estado);
+        reserva.setIdReserva(ID);
+        return reserva;
     }
 
     public ComandoReserva buildComando(){
