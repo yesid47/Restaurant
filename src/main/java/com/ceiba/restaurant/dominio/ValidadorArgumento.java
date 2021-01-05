@@ -24,7 +24,13 @@ public final class ValidadorArgumento {
     }
 
     public static void validarFecha(LocalDate fecha, String mensaje){
-        if(fecha.getDayOfWeek().toString().equals(LUNES) || fecha.getDayOfWeek().toString().equals(MARTES) || fecha.getDayOfWeek().toString().equals(MIERCOLES)){
+        if(fecha.getDayOfWeek().toString().equals(LUNES) || fecha.getDayOfWeek().toString().equals(MARTES) || fecha.getDayOfWeek().toString().equals(MIERCOLES) || fecha.isBefore(LocalDate.now()) ){
+            throw new ExcepcionFechaInvalida(mensaje);
+        }
+    }
+
+    public static void validarFechaHora(LocalDate fecha,LocalTime horaInicio,String mensaje){
+	    if(fecha.equals(LocalDate.now()) && horaInicio.isBefore(LocalTime.now())){
             throw new ExcepcionFechaInvalida(mensaje);
         }
     }

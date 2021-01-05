@@ -166,6 +166,21 @@ public class ValidadorArgumentoTest {
         }
     }
 
+    @Test
+    void validarFechaHoraInvalidaTest(){
+        //arrange
+        LocalDate fechaActual= LocalDate.now();
+        LocalTime horaActual = LocalTime.now();
+        //act
+        try {
+            validarFechaHora(fechaActual,horaActual.minusHours(1),SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA);
+            fail();
+        }catch (ExcepcionFechaInvalida e) {
+            //assert
+            Assertions.assertEquals(SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA, e.getMessage());
+        }
+    }
+
 
     @Test
     void validarNumericoTest(){

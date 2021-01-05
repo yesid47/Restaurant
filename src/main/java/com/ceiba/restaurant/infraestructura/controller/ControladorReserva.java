@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RestController
 @RequestMapping("reserva")
 public class ControladorReserva {
@@ -28,6 +29,7 @@ public class ControladorReserva {
 
     @PostMapping
     public void agregar(@RequestBody ComandoReserva comandoReserva){
+        this.manejadorUpdateEstado.ejecutar();
        this.manejadorCrearReserva.ejecutar(comandoReserva);
     }
 

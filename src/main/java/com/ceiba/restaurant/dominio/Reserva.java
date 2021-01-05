@@ -14,7 +14,8 @@ public class Reserva {
     private static final String SE_DEBE_INGRESAR_LA_PERSONA_QUE_HACE_LA_RESERVA = "Se debe ingresar la persona que hace la reserva";
     private static final String SE_DEBE_INGRESAR_LA_MESA_A_RESERVAR = "Se debe ingresar la mesa a reservar";
     private static final String SE_DEBE_INGRESAR_UNA_FECHA_VALIDA = "Se debe ingresar una fecha valida entre jueves y domingo";
-    private static final String SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA = "Se debe ingresar una hora de inicio entre las 08:00 y las 20:00 horas";
+    private static final String SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA = "Se debe ingresar una hora de inicio valida";
+
 
     private static final double TARIFA_JUEVES = 0.5;
     private static final double TARIFA_DOMINGO= 2.0;
@@ -49,6 +50,7 @@ public class Reserva {
             validarObligatorio(fecha,SE_DEBE_INGRESAR_LA_FECHA_DE_LA_RESERVA);
             validarFecha(fecha,SE_DEBE_INGRESAR_UNA_FECHA_VALIDA);
             validarObligatorio(horaInicio,SE_DEBE_INGRESAR_LA_HORA_DE_INICIO_DE_LA_RESERVA);
+            validarFechaHora(fecha,horaInicio,SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA);
             validarHora(horaInicio,SE_DEBE_INGRESAR_UNA_HORA_DE_INICIO_VALIDA);
             validarObligatorio(persona,SE_DEBE_INGRESAR_LA_PERSONA_QUE_HACE_LA_RESERVA);
             validarObligatorio(mesa, SE_DEBE_INGRESAR_LA_MESA_A_RESERVAR);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class FabricaPersona {
 
     public Persona crear(ComandoPersona comandoPersona){
-        return new Persona(comandoPersona.getIdPersona(),comandoPersona.getNombre(),comandoPersona.getCedula(), comandoPersona.getCelular(), comandoPersona.getEmail(),
+        return new Persona(comandoPersona.getIdPersona(),comandoPersona.getNombrePersona(),comandoPersona.getCedula(), comandoPersona.getCelular(), comandoPersona.getEmail(),
                 comandoPersona.getDireccion());
     }
 

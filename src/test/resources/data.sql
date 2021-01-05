@@ -17,10 +17,10 @@ VALUES (40,6,40,38000);
 
 
 INSERT INTO reserva(id,fecha,hora_inicial,hora_final,valor_pagar,estado,id_persona,id_mesa)
-VALUES (10,'2020-12-31','10:40:00','12:40:00',50000,true,10,10);
+VALUES (10,'2100-12-31','10:40:00','12:40:00',50000,true,10,10);
 
 INSERT INTO reserva(id,fecha,hora_inicial,hora_final,valor_pagar,estado,id_persona,id_mesa)
-VALUES (20,'2020-12-31','18:01:00','20:01:00',60000,true,10,10);
+VALUES (20,'2100-12-31','18:01:00','20:01:00',60000,true,10,10);
 
 INSERT INTO reserva(id,fecha,hora_inicial,hora_final,valor_pagar,estado,id_persona,id_mesa)
-VALUES (30,'2021-01-01','18:01:00','20:01:00',70000,true,20,20);
+VALUES (30,'2100-01-01','18:01:00','20:01:00',70000,true,20,20);

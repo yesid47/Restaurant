@@ -2,7 +2,7 @@ package com.ceiba.restaurant.aplicacion.comando;
 
 public class ComandoPersona {
     private long idPersona;
-    private String nombre;
+    private String nombrePersona;
     private String cedula;
     private long celular;
     private String email;
@@ -12,8 +12,8 @@ public class ComandoPersona {
 
     }
 
-    public ComandoPersona(String nombre, String cedula, long celular, String email, String direccion) {
-        this.nombre = nombre;
+    public ComandoPersona(String nombrePersona, String cedula, long celular, String email, String direccion) {
+        this.nombrePersona = nombrePersona;
         this.cedula = cedula;
         this.celular = celular;
         this.email = email;
@@ -24,8 +24,8 @@ public class ComandoPersona {
         return idPersona;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombrePersona() {
+        return nombrePersona;
     }
 
     public String getCedula() {
