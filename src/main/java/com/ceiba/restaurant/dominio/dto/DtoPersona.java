@@ -22,6 +22,15 @@ public class DtoPersona {
         return idPersona;
     }
 
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
     public void setIdPersona(long idPersona) {
         this.idPersona = idPersona;
     }
@@ -32,14 +41,6 @@ public class DtoPersona {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
     }
 
     public long getCelular() {

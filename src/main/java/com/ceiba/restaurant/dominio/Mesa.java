@@ -16,14 +16,13 @@ public class Mesa {
     private double precio;
 
 
-    public Mesa(int idMesa, int capacidadPersonas, int numeroMesa, double precio) {
+    public Mesa(int capacidadPersonas, int numeroMesa, double precio) {
 
         validarObligatorio(capacidadPersonas,SE_DEBE_INGRESAR_LA_CAPACIDAD_DE_LA_MESA);
         validarObligatorio(numeroMesa,SE_DEBE_INGRESAR_EL_NUMERO_DE_MESA);
         validarObligatorio(precio,SE_DEBE_INGRESAR_EL_PRECIO_DE_LA_MESA);
         validarPositivo(precio,EL_VALOR_DE_LA_MESA_DEBE_SER_POSITIVO);
 
-        this.idMesa = idMesa;
         this.capacidadPersonas = capacidadPersonas;
         this.numeroMesa = numeroMesa;
         this.precio = precio;

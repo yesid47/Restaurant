@@ -7,7 +7,7 @@ public class DtoMesa {
     private double precio;
 
     public DtoMesa(int idMesa, int capacidadPersonas, int numeroMesa, double precio) {
-        this.idMesa = idMesa;
+        this.idMesa= idMesa;
         this.capacidadPersonas = capacidadPersonas;
         this.numeroMesa = numeroMesa;
         this.precio = precio;
@@ -15,6 +15,10 @@ public class DtoMesa {
 
     public int getIdMesa() {
         return idMesa;
+    }
+
+    public int getNumeroMesa() {
+        return numeroMesa;
     }
 
     public void setIdMesa(int idMesa) {
@@ -27,10 +31,6 @@ public class DtoMesa {
 
     public void setCapacidadPersonas(int capacidadPersonas) {
         this.capacidadPersonas = capacidadPersonas;
-    }
-
-    public int getNumeroMesa() {
-        return numeroMesa;
     }
 
     public void setNumeroMesa(int numeroMesa) {

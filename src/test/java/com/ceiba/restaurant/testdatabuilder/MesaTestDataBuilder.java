@@ -22,7 +22,9 @@ public class MesaTestDataBuilder {
     }
 
     public Mesa build(){
-        return new Mesa(id,this.capacidad,this.numeroMesa,this.precio);
+        Mesa mesa = new Mesa(this.capacidad,this.numeroMesa,this.precio);
+        mesa.setIdMesa(id);
+        return mesa;
     }
 
     public DtoMesa buildDto(){

@@ -29,7 +29,9 @@ public class PersonaTestDataBuilder {
     }
 
     public Persona build(){
-        return new Persona(ID,this.nombre,this.cedula,this.celular,this.email,this.direccion);
+        Persona persona = new Persona(this.nombre,this.cedula,this.celular,this.email,this.direccion);
+        persona.setIdPersona(ID);
+        return persona;
     }
 
     public DtoPersona buildDto(){

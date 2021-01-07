@@ -25,9 +25,6 @@ public class DtoReserva {
         this.estado = estado;
     }
 
-    public long getIdReserva() {
-        return idReserva;
-    }
 
     public void setIdReserva(long idReserva) {
         this.idReserva = idReserva;
@@ -39,6 +36,27 @@ public class DtoReserva {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+
+
+    public DtoPersona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(DtoPersona persona) {
+        this.persona = persona;
+    }
+
+    public DtoMesa getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(DtoMesa mesa) {
+        this.mesa = mesa;
+    }
+
+    public long getIdReserva() {
+        return idReserva;
     }
 
     public LocalTime getHoraInicio() {
@@ -55,22 +73,6 @@ public class DtoReserva {
 
     public void setHoraFinal(LocalTime horaFinal) {
         this.horaFinal = horaFinal;
-    }
-
-    public DtoPersona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(DtoPersona persona) {
-        this.persona = persona;
-    }
-
-    public DtoMesa getMesa() {
-        return mesa;
-    }
-
-    public void setMesa(DtoMesa mesa) {
-        this.mesa = mesa;
     }
 
     public double getValorAPagar() {
