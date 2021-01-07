@@ -1,6 +1,5 @@
 package com.ceiba.restaurant.aplicacion.manejador.persona;
 
-import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import com.ceiba.restaurant.dominio.servicio.persona.ServicioListarPersonas;
 import org.springframework.stereotype.Component;
