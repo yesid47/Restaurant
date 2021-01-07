@@ -1,7 +1,7 @@
 package com.ceiba.restaurant.infraestructura.controller;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorpersona.*;
+import com.ceiba.restaurant.aplicacion.manejador.persona.*;
 import com.ceiba.restaurant.dominio.Persona;
 import org.springframework.web.bind.annotation.*;
 

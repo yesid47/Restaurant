@@ -1,7 +1,7 @@
 package com.ceiba.restaurant.infraestructura.controller;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoReserva;
-import com.ceiba.restaurant.aplicacion.manejador.manejadorreserva.*;
+import com.ceiba.restaurant.aplicacion.manejador.reserva.*;
 import com.ceiba.restaurant.dominio.Reserva;
 import org.springframework.web.bind.annotation.*;
 

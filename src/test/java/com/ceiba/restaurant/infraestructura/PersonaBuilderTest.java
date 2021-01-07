@@ -1,4 +1,4 @@
-package com.ceiba.restaurant.dominio.unitaria;
+package com.ceiba.restaurant.infraestructura;
 
 import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.PersonaBuilder;

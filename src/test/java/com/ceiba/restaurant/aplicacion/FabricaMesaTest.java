@@ -1,4 +1,4 @@
-package com.ceiba.restaurant.dominio.unitaria;
+package com.ceiba.restaurant.aplicacion;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoMesa;
 import com.ceiba.restaurant.aplicacion.fabrica.FabricaMesa;

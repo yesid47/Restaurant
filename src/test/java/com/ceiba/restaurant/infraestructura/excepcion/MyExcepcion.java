@@ -1,4 +1,4 @@
-package com.ceiba.restaurant.dominio.unitaria.excepcion;
+package com.ceiba.restaurant.infraestructura.excepcion;
 
 public class MyExcepcion extends Exception {
     private int codigoError;

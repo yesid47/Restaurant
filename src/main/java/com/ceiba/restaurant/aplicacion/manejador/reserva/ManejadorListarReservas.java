@@ -1,4 +1,4 @@
-package com.ceiba.restaurant.aplicacion.manejador.manejadorreserva;
+package com.ceiba.restaurant.aplicacion.manejador.reserva;
 
 import com.ceiba.restaurant.dominio.Reserva;
 import com.ceiba.restaurant.dominio.servicio.reserva.ServicioListarReservas;

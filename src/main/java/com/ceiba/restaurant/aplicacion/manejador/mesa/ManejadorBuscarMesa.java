@@ -1,4 +1,4 @@
-package com.ceiba.restaurant.aplicacion.manejador.manejadormesa;
+package com.ceiba.restaurant.aplicacion.manejador.mesa;
 
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.servicio.mesa.ServicioBuscarMesa;

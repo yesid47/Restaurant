@@ -1,4 +1,4 @@
-package com.ceiba.restaurant.aplicacion.manejador.manejadorpersona;
+package com.ceiba.restaurant.aplicacion.manejador.persona;
 
 import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.servicio.persona.ServicioListarPersonas;

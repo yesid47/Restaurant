@@ -1,7 +1,7 @@
-package com.ceiba.restaurant.dominio.unitaria;
+package com.ceiba.restaurant.infraestructura;
 
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaExiste;
-import com.ceiba.restaurant.dominio.unitaria.excepcion.MyExcepcion;
+import com.ceiba.restaurant.infraestructura.excepcion.MyExcepcion;
 import com.ceiba.restaurant.infraestructura.error.ManejadorError;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

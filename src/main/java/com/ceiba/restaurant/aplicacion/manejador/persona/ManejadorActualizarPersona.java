@@ -1,27 +1,28 @@
-package com.ceiba.restaurant.aplicacion.manejador.manejadorpersona;
+package com.ceiba.restaurant.aplicacion.manejador.persona;
+
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
 import com.ceiba.restaurant.aplicacion.fabrica.FabricaPersona;
 import com.ceiba.restaurant.dominio.Persona;
-import com.ceiba.restaurant.dominio.servicio.persona.ServicioCrearPersona;
+import com.ceiba.restaurant.dominio.servicio.persona.ServicioActualizarPersona;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class ManejadorCrearPersona {
+public class ManejadorActualizarPersona {
 
-    private final ServicioCrearPersona servicioCrearPersona;
+    private final ServicioActualizarPersona servicioActualizarPersona;
     private final FabricaPersona fabricaPersona;
 
-    public ManejadorCrearPersona(ServicioCrearPersona servicioPersona, FabricaPersona fabricaPersona)
+    public ManejadorActualizarPersona(ServicioActualizarPersona servicioActualizarPersona, FabricaPersona fabricaPersona)
     {
-        this.servicioCrearPersona = servicioPersona;
+        this.servicioActualizarPersona = servicioActualizarPersona;
         this.fabricaPersona= fabricaPersona;
     }
 
     @Transactional
     public void ejecutar(ComandoPersona comandoPersona){
         Persona persona = this.fabricaPersona.crear(comandoPersona);
-        this.servicioCrearPersona.ejecutar(persona);
+        this.servicioActualizarPersona.ejecutar(persona);
     }
 }

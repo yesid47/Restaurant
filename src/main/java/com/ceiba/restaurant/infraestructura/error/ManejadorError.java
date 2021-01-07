@@ -35,6 +35,8 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
         CODIGOS_ESTADO.put(ExcepcionFechaInvalida.class.getSimpleName(), HttpStatus.NOT_ACCEPTABLE.value());
         CODIGOS_ESTADO.put(ExcepcionHoraInvalida.class.getSimpleName(), HttpStatus.NOT_ACCEPTABLE.value());
         CODIGOS_ESTADO.put(ExcepcionMesaReservada.class.getSimpleName(), HttpStatus.NOT_ACCEPTABLE.value());
+        CODIGOS_ESTADO.put(ExcepcionReservaNoExiste.class.getSimpleName(), HttpStatus.NOT_FOUND.value());
+
         
         //en caso de tener otra excepcion matricularla aca
     }
