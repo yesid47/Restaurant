@@ -63,7 +63,9 @@ public class ControladorMesaTest {
                 .get("/mesa/mesas")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[2].numeroMesa").value(20));
     }
 
     @Test

@@ -74,7 +74,9 @@ public class ControladorPersonaTest {
                 .get("/persona/personas")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[3].nombre").value("Michael Martinez"));
     }
 
 

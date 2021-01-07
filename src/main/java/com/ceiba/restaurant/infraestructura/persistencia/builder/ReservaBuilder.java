@@ -59,6 +59,9 @@ public final class ReservaBuilder {
         if(lista.isEmpty()){
             return false;
         }
-        return true;
+        else{
+            return true;
+        }
+
     }
 }
