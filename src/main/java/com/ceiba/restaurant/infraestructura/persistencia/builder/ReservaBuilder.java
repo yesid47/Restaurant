@@ -56,6 +56,7 @@ public final class ReservaBuilder {
     }
 
     public static boolean convertirABool(List<ReservaEntity> lista){
-        return lista.size()>0;
+
+        return lista.isEmpty() ?false:true;
     }
 }
