@@ -2,6 +2,7 @@ package com.ceiba.restaurant.dominio.repositorio;
 
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.dto.DtoReserva;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,12 +10,11 @@ import java.util.List;
 
 public interface RepositorioReserva {
 
-    Reserva obtenerPorId(long id);
+    DtoReserva obtenerPorId(long id);
 
     void agregar(Reserva reserva);
 
-
-    List<Reserva> listarTodo();
+    List<DtoReserva> listarTodo();
 
     boolean validarDisponibilidad(LocalDate fecha, LocalTime horaInicial, LocalTime horaFinal, Mesa mesa);
 

@@ -1,6 +1,7 @@
 package com.ceiba.restaurant.dominio.unitaria;
 
 import com.ceiba.restaurant.dominio.Persona;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionPersonaExiste;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioPersona;
 import com.ceiba.restaurant.dominio.servicio.persona.ServicioCrearPersona;
@@ -16,11 +17,12 @@ public class ServicioCrearPersonaTest {
 
     private static final String LA_PERSONA_YA_EXISTE_EN_EL_SISTEMA = "La persona ya existe en el sistema";
 
-    @Test
+  @Test
     public void personaExisteTest(){
         RepositorioPersona repositorioPersona = mock(RepositorioPersona.class);
         Persona persona = new PersonaTestDataBuilder().build();
-        when(repositorioPersona.obtenerPorCedula(persona.getCedula())).thenReturn(persona);
+        DtoPersona personaDto = new PersonaTestDataBuilder().buildDto();
+        when(repositorioPersona.obtenerPorCedula(persona.getCedula())).thenReturn(personaDto);
         ServicioCrearPersona servicioCrearPersona = new ServicioCrearPersona(repositorioPersona);
         //act
         try {

@@ -1,6 +1,7 @@
 package com.ceiba.restaurant.infraestructura.persistencia.builder;
 
 import com.ceiba.restaurant.dominio.Persona;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 
 import java.util.ArrayList;
@@ -12,11 +13,11 @@ public final class PersonaBuilder {
 
     }
 
-    public static Persona convertirADominio(PersonaEntity personaEntity){
+    public static DtoPersona convertirADominio(PersonaEntity personaEntity){
 
-        Persona persona= null;
+        DtoPersona persona= null;
         if(personaEntity != null){
-            persona = new Persona(personaEntity.getId(),personaEntity.getNombre(),personaEntity.getCedula(),personaEntity.getCelular(),personaEntity.getEmail(),personaEntity.getDireccion());
+            persona = new DtoPersona(personaEntity.getId(),personaEntity.getNombre(),personaEntity.getCedula(),personaEntity.getCelular(),personaEntity.getEmail(),personaEntity.getDireccion());
         }
         return persona;
     }
@@ -33,9 +34,9 @@ public final class PersonaBuilder {
         return personaEntity;
     }
 
-    public static List<Persona> convertirADominio(List<PersonaEntity> listaEntity){
+    public static List<DtoPersona> convertirADominio(List<PersonaEntity> listaEntity){
 
-        ArrayList<Persona> listaDominio = new ArrayList<>();
+        ArrayList<DtoPersona> listaDominio = new ArrayList<>();
         for (PersonaEntity persona : listaEntity){
             listaDominio.add(convertirADominio(persona));
         }

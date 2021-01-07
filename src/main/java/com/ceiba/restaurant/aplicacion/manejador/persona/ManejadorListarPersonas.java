@@ -1,6 +1,7 @@
 package com.ceiba.restaurant.aplicacion.manejador.persona;
 
 import com.ceiba.restaurant.dominio.Persona;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import com.ceiba.restaurant.dominio.servicio.persona.ServicioListarPersonas;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ public class ManejadorListarPersonas {
     }
 
     @Transactional
-    public List<Persona> ejecutar(){
+    public List<DtoPersona> ejecutar(){
         return this.servicioListarPersonas.ejecutar();
     }
 }

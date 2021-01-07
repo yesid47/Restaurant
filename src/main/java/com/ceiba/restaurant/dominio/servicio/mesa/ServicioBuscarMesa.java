@@ -1,6 +1,6 @@
 package com.ceiba.restaurant.dominio.servicio.mesa;
 
-import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +13,7 @@ public class ServicioBuscarMesa {
         this.repositorioMesa = repositorioMesa;
     }
 
-    public Mesa ejecutar(int numero){
+    public DtoMesa ejecutar(int numero){
         return this.repositorioMesa.obtenerPorNumero(numero);
     }
 }

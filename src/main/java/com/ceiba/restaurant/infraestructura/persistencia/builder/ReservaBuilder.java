@@ -1,8 +1,9 @@
 package com.ceiba.restaurant.infraestructura.persistencia.builder;
 
-import com.ceiba.restaurant.dominio.Mesa;
-import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
+import com.ceiba.restaurant.dominio.dto.DtoReserva;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.ReservaEntity;
@@ -11,15 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ReservaBuilder {
-    ReservaBuilder(){}
+    private ReservaBuilder(){}
 
-    public static Reserva convertirADominio(ReservaEntity reservaEntity){
-        Reserva reserva= null;
+    public static DtoReserva convertirADominio(ReservaEntity reservaEntity){
+        DtoReserva reserva= null;
 
         if(reservaEntity!=null){
-            Persona persona = PersonaBuilder.convertirADominio(reservaEntity.getPersona());
-            Mesa mesa = MesaBuilder.convertirADominio(reservaEntity.getMesa());
-            reserva = new Reserva(reservaEntity.getFecha(),reservaEntity.getHoraInicial(),reservaEntity.getHoraFinal(),
+            DtoPersona persona = PersonaBuilder.convertirADominio(reservaEntity.getPersona());
+            DtoMesa mesa = MesaBuilder.convertirADto(reservaEntity.getMesa());
+            reserva = new DtoReserva(reservaEntity.getFecha(),reservaEntity.getHoraInicial(),reservaEntity.getHoraFinal(),
                     persona,mesa,reservaEntity.getValorPagar(), reservaEntity.getEstado());
             reserva.setIdReserva(reservaEntity.getId());
         }
@@ -43,9 +44,9 @@ public final class ReservaBuilder {
         return reservaEntity;
     }
 
-    public static List<Reserva> convertirADominio(List<ReservaEntity> listaEntity){
+    public static List<DtoReserva> convertirADominio(List<ReservaEntity> listaEntity){
 
-        ArrayList<Reserva> listaDominio = new ArrayList<>();
+        ArrayList<DtoReserva> listaDominio = new ArrayList<>();
 
         for (ReservaEntity reserva : listaEntity){
             listaDominio.add(convertirADominio(reserva));

@@ -2,7 +2,7 @@ package com.ceiba.restaurant.infraestructura.controller;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoMesa;
 import com.ceiba.restaurant.aplicacion.manejador.mesa.*;
-import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,12 +31,12 @@ public class ControladorMesa {
     }
 
     @GetMapping("/{numeroMesa}")
-    public Mesa buscarPorNumero(@PathVariable(name="numeroMesa") int numeroMesa){
+    public DtoMesa buscarPorNumero(@PathVariable(name="numeroMesa") int numeroMesa){
         return this.manejadorBuscarMesa.ejecutar(numeroMesa);
     }
 
     @GetMapping("/mesas")
-    public List<Mesa> listarMesas(){
+    public List<DtoMesa> listarMesas(){
         return this.manejadorListarMesas.ejecutar();
     }
 

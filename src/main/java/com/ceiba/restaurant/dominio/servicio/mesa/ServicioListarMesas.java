@@ -1,6 +1,6 @@
 package com.ceiba.restaurant.dominio.servicio.mesa;
 
-import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ public class ServicioListarMesas {
         this.repositorioMesa = repositorioMesa;
     }
 
-    public List<Mesa> ejecutar(){
+    public List<DtoMesa> ejecutar(){
         return this.repositorioMesa.listarTodo();
     }
 }

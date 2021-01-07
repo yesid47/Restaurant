@@ -2,6 +2,7 @@ package com.ceiba.restaurant.testdatabuilder;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoMesa;
 import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 
 public class MesaTestDataBuilder {
@@ -22,6 +23,10 @@ public class MesaTestDataBuilder {
 
     public Mesa build(){
         return new Mesa(id,this.capacidad,this.numeroMesa,this.precio);
+    }
+
+    public DtoMesa buildDto(){
+        return new DtoMesa(id,this.capacidad,this.numeroMesa,this.precio);
     }
 
     public ComandoMesa buildComando(){

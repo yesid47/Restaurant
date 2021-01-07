@@ -1,8 +1,9 @@
 package com.ceiba.restaurant.dominio.unitaria;
 
-import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaInexistente;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaReservada;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionPersonaInexistente;
@@ -38,10 +39,10 @@ public class ServicioCrearReservaTest {
     public void validarDisponibilidadTest(){
        //arrange
         RepositorioMesa repositorioMesa = mock(RepositorioMesa.class);
-        Mesa mesa = new MesaTestDataBuilder().build();
+        DtoMesa mesa = new MesaTestDataBuilder().buildDto();
         when(repositorioMesa.obtenerPorNumero(mesa.getNumeroMesa())).thenReturn(mesa);
         RepositorioPersona repositorioPersona = mock(RepositorioPersona.class);
-        Persona persona = new PersonaTestDataBuilder().build();
+        DtoPersona persona = new PersonaTestDataBuilder().buildDto();
         when(repositorioPersona.obtenerPorCedula(persona.getCedula())).thenReturn(persona);
         RepositorioReserva repositorioReserva = mock(RepositorioReserva.class);
         Reserva reserva = new ReservaTestDataBuilder().build();
@@ -56,14 +57,14 @@ public class ServicioCrearReservaTest {
         }
     }
 
-    @Test
+   @Test
     public void validarMesaInexistenteTest(){
         //arrange
         RepositorioMesa repositorioMesa = mock(RepositorioMesa.class);
-        Mesa mesa = new MesaTestDataBuilder().build();
+        DtoMesa mesa = new MesaTestDataBuilder().buildDto();
         when(repositorioMesa.obtenerPorNumero(mesa.getNumeroMesa())).thenReturn(null);
         RepositorioPersona repositorioPersona = mock(RepositorioPersona.class);
-        Persona persona = new PersonaTestDataBuilder().build();
+        DtoPersona persona = new PersonaTestDataBuilder().buildDto();
         when(repositorioPersona.obtenerPorCedula(persona.getCedula())).thenReturn(persona);
         RepositorioReserva repositorioReserva = mock(RepositorioReserva.class);
         Reserva reserva = new ReservaTestDataBuilder().build();
@@ -79,11 +80,11 @@ public class ServicioCrearReservaTest {
     }
 
 
-    @Test
+   @Test
     public void validarPersonaInexistenteTest(){
         //arrange
         RepositorioMesa repositorioMesa = mock(RepositorioMesa.class);
-        Mesa mesa = new MesaTestDataBuilder().build();
+        DtoMesa mesa = new MesaTestDataBuilder().buildDto();
         when(repositorioMesa.obtenerPorNumero(mesa.getNumeroMesa())).thenReturn(mesa);
         RepositorioPersona repositorioPersona = mock(RepositorioPersona.class);
         Persona persona = new PersonaTestDataBuilder().build();
@@ -99,4 +100,5 @@ public class ServicioCrearReservaTest {
             Assertions.assertEquals(LA_PERSONA_NO_EXISTE, e.getMessage());
         }
     }
+
 }

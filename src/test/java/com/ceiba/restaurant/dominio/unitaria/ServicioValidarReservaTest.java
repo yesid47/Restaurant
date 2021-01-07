@@ -3,6 +3,7 @@ package com.ceiba.restaurant.dominio.unitaria;
 
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaInexistente;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioReserva;
@@ -34,7 +35,7 @@ public class ServicioValidarReservaTest {
     private static final LocalDate FECHA = LocalDate.parse("2021-01-01");
 
     @Test
-     public void validarMesaExisteTest(){
+     public void validarMesaNoExisteTest(){
         //arrange
         Reserva reserva = new ReservaTestDataBuilder().build();
         Mesa mesa = new MesaTestDataBuilder().build();
@@ -52,17 +53,18 @@ public class ServicioValidarReservaTest {
         }
     }
 
-    @Test
+  @Test
     public void validarDisponibilidadTest(){
         //arrange
         Reserva reserva = new ReservaTestDataBuilder().build();
         Mesa mesa = new MesaTestDataBuilder().build();
+        DtoMesa mesaDto = new MesaTestDataBuilder().buildDto();
         RepositorioReserva repositorioReserva = mock(RepositorioReserva.class);
         RepositorioMesa repositorioMesa = mock(RepositorioMesa.class);
         reserva.setFecha(FECHA);
         reserva.setHoraInicio(HORA_INICIO);
         reserva.setHoraFinal(HORA_FINAL);
-        when(repositorioMesa.obtenerPorNumero(mesa.getNumeroMesa())).thenReturn(mesa);
+        when(repositorioMesa.obtenerPorNumero(mesa.getNumeroMesa())).thenReturn(mesaDto);
         ServicioValidarReserva servicioValidarReserva = new ServicioValidarReserva(repositorioReserva,repositorioMesa);
         //act
         boolean respuesta = servicioValidarReserva.ejecutar(reserva);

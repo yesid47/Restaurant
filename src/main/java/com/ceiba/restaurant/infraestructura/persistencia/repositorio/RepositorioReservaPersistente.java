@@ -2,6 +2,7 @@ package com.ceiba.restaurant.infraestructura.persistencia.repositorio;
 
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.dto.DtoReserva;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioReserva;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.MesaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.ReservaBuilder;
@@ -33,7 +34,7 @@ public class RepositorioReservaPersistente implements RepositorioReserva, Reposi
 
 
     @Override
-    public Reserva obtenerPorId(long id) {
+    public DtoReserva obtenerPorId(long id) {
         ReservaEntity reservaEntity = obtenerEntityPorId(id);
         return ReservaBuilder.convertirADominio(reservaEntity);
     }
@@ -50,7 +51,7 @@ public class RepositorioReservaPersistente implements RepositorioReserva, Reposi
 
 
     @Override
-    public List<Reserva> listarTodo() {
+    public List<DtoReserva> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
         ArrayList<ReservaEntity> listaEntity = (ArrayList<ReservaEntity>) query.getResultList();
         return ReservaBuilder.convertirADominio(listaEntity);

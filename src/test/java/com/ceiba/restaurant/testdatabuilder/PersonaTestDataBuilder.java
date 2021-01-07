@@ -2,6 +2,7 @@ package com.ceiba.restaurant.testdatabuilder;
 
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
 import com.ceiba.restaurant.dominio.Persona;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 
 public class PersonaTestDataBuilder {
@@ -29,6 +30,10 @@ public class PersonaTestDataBuilder {
 
     public Persona build(){
         return new Persona(ID,this.nombre,this.cedula,this.celular,this.email,this.direccion);
+    }
+
+    public DtoPersona buildDto(){
+        return new DtoPersona(ID,this.nombre,this.cedula,this.celular,this.email,this.direccion);
     }
 
     public ComandoPersona buildComando(){

@@ -1,6 +1,6 @@
 package com.ceiba.restaurant.aplicacion.manejador.mesa;
 
-import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
 import com.ceiba.restaurant.dominio.servicio.mesa.ServicioListarMesas;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ public class ManejadorListarMesas {
     }
 
     @Transactional
-    public List<Mesa> ejecutar(){
+    public List<DtoMesa> ejecutar(){
         return this.servicioListarMesas.ejecutar();
     }
 }

@@ -49,4 +49,8 @@ public class Mesa {
     public void setNumeroMesa(int numeroMesa) {
         this.numeroMesa = numeroMesa;
     }
+
+    public void setIdMesa(int idMesa) {
+        this.idMesa = idMesa;
+    }
 }

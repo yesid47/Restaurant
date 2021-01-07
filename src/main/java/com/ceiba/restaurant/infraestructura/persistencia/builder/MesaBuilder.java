@@ -1,6 +1,7 @@
 package com.ceiba.restaurant.infraestructura.persistencia.builder;
 
 import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 
 import java.util.ArrayList;
@@ -12,15 +13,16 @@ public final class MesaBuilder {
 
     }
 
-    public static Mesa convertirADominio(MesaEntity mesaEntity){
-        Mesa mesa= null;
+    public static DtoMesa convertirADto(MesaEntity mesaEntity){
+        DtoMesa mesa= null;
 
         if(mesaEntity !=null){
-            mesa= new Mesa(mesaEntity.getId(),mesaEntity.getCapacidad(),mesaEntity.getNumeroMesa(),mesaEntity.getPrecio());
+            mesa= new DtoMesa(mesaEntity.getId(),mesaEntity.getCapacidad(),mesaEntity.getNumeroMesa(),mesaEntity.getPrecio());
         }
 
         return mesa;
     }
+
 
     public static MesaEntity convertirAEntity(Mesa mesa){
         MesaEntity mesaEntity= new MesaEntity();
@@ -32,10 +34,10 @@ public final class MesaBuilder {
         return mesaEntity;
     }
 
-    public static List<Mesa> convertirADominio(List<MesaEntity> mesas){
-        ArrayList<Mesa> mesasDominio = new ArrayList<>();
+    public static List<DtoMesa> convertirADominio(List<MesaEntity> mesas){
+        ArrayList<DtoMesa> mesasDominio = new ArrayList<>();
         for (MesaEntity mesa : mesas){
-            mesasDominio.add(convertirADominio(mesa));
+            mesasDominio.add(convertirADto(mesa));
         }
 
         return mesasDominio;

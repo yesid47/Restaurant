@@ -1,6 +1,7 @@
 package com.ceiba.restaurant.infraestructura.persistencia.repositorio;
 
 import com.ceiba.restaurant.dominio.Persona;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioPersona;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.PersonaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
@@ -31,7 +32,7 @@ public class RepositorioPersonaPersistente implements RepositorioPersona, Reposi
     }
 
     @Override
-    public Persona obtenerPorId(long id) {
+    public DtoPersona obtenerPorId(long id) {
         PersonaEntity personaEntity = obtenerPersonaEntityPorId(id);
         return PersonaBuilder.convertirADominio(personaEntity);
     }
@@ -42,7 +43,7 @@ public class RepositorioPersonaPersistente implements RepositorioPersona, Reposi
     }
 
     @Override
-    public List<Persona> listarTodo() {
+    public List<DtoPersona> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
         ArrayList<PersonaEntity> listaEntity= (ArrayList<PersonaEntity>) query.getResultList();
         return PersonaBuilder.convertirADominio(listaEntity);
@@ -55,7 +56,7 @@ public class RepositorioPersonaPersistente implements RepositorioPersona, Reposi
     }
 
     @Override
-    public Persona obtenerPorCedula(String cedula) {
+    public DtoPersona obtenerPorCedula(String cedula) {
         PersonaEntity personaEntity = obtenerPersonaEntityPorCedula(cedula);
         return PersonaBuilder.convertirADominio(personaEntity);
     }

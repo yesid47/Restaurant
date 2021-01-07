@@ -1,6 +1,6 @@
 package com.ceiba.restaurant.aplicacion.manejador.reserva;
 
-import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.dto.DtoReserva;
 import com.ceiba.restaurant.dominio.servicio.reserva.ServicioListarReservas;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ public class ManejadorListarReservas {
     }
 
     @Transactional
-    public List<Reserva> ejecutar(){
+    public List<DtoReserva> ejecutar(){
         return servicioListarReservas.ejecutar();
     }
 }

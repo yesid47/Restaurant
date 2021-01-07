@@ -1,6 +1,5 @@
 package com.ceiba.restaurant.dominio.servicio.reserva;
 
-import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaReservada;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionReservaNoExiste;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioReserva;
 import org.springframework.stereotype.Component;

@@ -3,6 +3,7 @@ package com.ceiba.restaurant.infraestructura.controller;
 import com.ceiba.restaurant.aplicacion.comando.ComandoPersona;
 import com.ceiba.restaurant.aplicacion.manejador.persona.*;
 import com.ceiba.restaurant.dominio.Persona;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,17 +34,17 @@ public class ControladorPersona {
     }
 
     @GetMapping("id/{id}")
-        public Persona buscarPorId(@PathVariable(name="id") long id){
+        public DtoPersona buscarPorId(@PathVariable(name="id") long id){
             return this.manejadorBuscarPersona.ejecutar(id);
     }
 
     @GetMapping("/{cedula}")
-    public Persona buscarPorCedula(@PathVariable (name="cedula") String cedula){
+    public DtoPersona buscarPorCedula(@PathVariable (name="cedula") String cedula){
         return this.manejadorBuscarPersona.ejecutar(cedula);
     }
 
     @GetMapping("/personas")
-    public List<Persona> listarTodo(){
+    public List<DtoPersona> listarTodo(){
         return this.manejadorListarPersonas.ejecutar();
     }
 

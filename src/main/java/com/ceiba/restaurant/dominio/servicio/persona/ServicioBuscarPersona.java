@@ -1,6 +1,6 @@
 package com.ceiba.restaurant.dominio.servicio.persona;
 
-import com.ceiba.restaurant.dominio.Persona;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioPersona;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +12,11 @@ public class ServicioBuscarPersona {
         this.repositorioPersona = repositorioPersona;
     }
 
-    public Persona ejecutar(long id){
+    public DtoPersona ejecutar(long id){
         return this.repositorioPersona.obtenerPorId(id);
     }
 
-    public Persona ejecutar(String cedula){
+    public DtoPersona ejecutar(String cedula){
         return this.repositorioPersona.obtenerPorCedula(cedula);
     }
 }

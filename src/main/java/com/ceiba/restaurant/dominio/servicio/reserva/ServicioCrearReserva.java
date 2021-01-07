@@ -1,8 +1,9 @@
 package com.ceiba.restaurant.dominio.servicio.reserva;
 
 import com.ceiba.restaurant.dominio.Mesa;
-import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaInexistente;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaReservada;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionPersonaInexistente;
@@ -31,15 +32,16 @@ public class ServicioCrearReserva {
 
     public void ejecutar(Reserva reserva){
 
-        Mesa mesa = this.repositorioMesa.obtenerPorNumero(reserva.getMesa().getNumeroMesa());
-        Persona persona = this.repositorioPersona.obtenerPorCedula(reserva.getPersona().getCedula());
+        DtoMesa mesa = this.repositorioMesa.obtenerPorNumero(reserva.getMesa().getNumeroMesa());
+        DtoPersona persona = this.repositorioPersona.obtenerPorCedula(reserva.getPersona().getCedula());
+
 
         validarMesaExistente(mesa);
         validarPersonaExistente(persona);
-        validarDisponibilidad(reserva,mesa);
+        reserva.getMesa().setIdMesa(mesa.getIdMesa());
+        reserva.getPersona().setIdPersona(persona.getIdPersona());
+        validarDisponibilidad(reserva,reserva.getMesa());
 
-        reserva.setMesa(mesa);
-        reserva.setPersona(persona);
         this.repositorioReserva.agregar(reserva);
 
     }
@@ -50,13 +52,13 @@ public class ServicioCrearReserva {
         }
     }
 
-    private void validarMesaExistente(Mesa mesa){
+    private void validarMesaExistente(DtoMesa mesa){
         if(mesa == null){
             throw new ExcepcionMesaInexistente(LA_MESA_NO_EXISTE);
         }
     }
 
-    private void validarPersonaExistente(Persona persona){
+    private void validarPersonaExistente(DtoPersona persona){
         if(persona == null){
             throw new ExcepcionPersonaInexistente(LA_PERSONA_NO_EXISTE);
         }

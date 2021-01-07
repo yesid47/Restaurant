@@ -18,8 +18,8 @@ import static org.junit.Assert.*;
 public class ReservaTest {
 
     private static final LocalTime horaInicial = LocalTime.parse("10:20");
-    private static final LocalDate fechaJueves = LocalDate.parse("2021-01-07");
-    private static final LocalDate fechaDomingo = LocalDate.parse("2021-01-03");
+    private static final LocalDate fechaJueves = LocalDate.parse("2200-01-02");
+    private static final LocalDate fechaDomingo = LocalDate.parse("2200-01-05");
     private static final double precioMesa = 20000;
 
     private Reserva reserva;

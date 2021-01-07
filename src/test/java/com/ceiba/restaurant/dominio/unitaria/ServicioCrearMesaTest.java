@@ -1,6 +1,7 @@
 package com.ceiba.restaurant.dominio.unitaria;
 
 import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
 import com.ceiba.restaurant.dominio.excepcion.ExcepcionMesaExiste;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
 import com.ceiba.restaurant.dominio.servicio.mesa.ServicioCrearMesa;
@@ -16,11 +17,12 @@ public class ServicioCrearMesaTest {
 
     private static final String LA_MESA_YA_EXISTE_EN_EL_SISTEMA = "La mesa ya existe en el sistema";
 
-    @Test
+   @Test
     public void mesaExisteTest(){
         RepositorioMesa repositorioMesa = mock(RepositorioMesa.class);
+        DtoMesa mesaDto = new MesaTestDataBuilder().buildDto();
         Mesa mesa = new MesaTestDataBuilder().build();
-        when(repositorioMesa.obtenerPorNumero(mesa.getNumeroMesa())).thenReturn(mesa);
+        when(repositorioMesa.obtenerPorNumero(mesa.getNumeroMesa())).thenReturn(mesaDto);
         ServicioCrearMesa servicioCrearMesa = new ServicioCrearMesa(repositorioMesa);
         //act
         try {

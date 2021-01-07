@@ -1,6 +1,7 @@
 package com.ceiba.restaurant.infraestructura.persistencia.repositorio;
 
 import com.ceiba.restaurant.dominio.Mesa;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
 import com.ceiba.restaurant.dominio.repositorio.RepositorioMesa;
 import com.ceiba.restaurant.infraestructura.persistencia.builder.MesaBuilder;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
@@ -30,9 +31,9 @@ public class RepositorioMesaPersistente implements RepositorioMesa, RepositorioM
     }
 
     @Override
-    public Mesa obtenerPorId(int id) {
+    public DtoMesa obtenerPorId(int id) {
         MesaEntity mesaEntity = obtenerEntityPorId(id);
-        return MesaBuilder.convertirADominio(mesaEntity);
+        return MesaBuilder.convertirADto(mesaEntity);
     }
 
     @Override
@@ -40,8 +41,9 @@ public class RepositorioMesaPersistente implements RepositorioMesa, RepositorioM
         return entityManager.find(MesaEntity.class,id);
     }
 
+
     @Override
-    public List<Mesa> listarTodo() {
+    public List<DtoMesa> listarTodo() {
         Query query = entityManager.createQuery(FIND_ALL);
         ArrayList<MesaEntity> mesas = (ArrayList<MesaEntity>) query.getResultList();
         return MesaBuilder.convertirADominio(mesas);
@@ -54,9 +56,9 @@ public class RepositorioMesaPersistente implements RepositorioMesa, RepositorioM
     }
 
     @Override
-    public Mesa obtenerPorNumero(int numero) {
+    public DtoMesa obtenerPorNumero(int numero) {
         MesaEntity mesaEntity = obtenerEntityPorNumero(numero);
-        return MesaBuilder.convertirADominio(mesaEntity);
+        return MesaBuilder.convertirADto(mesaEntity);
     }
 
     @Override

@@ -1,19 +1,20 @@
 package com.ceiba.restaurant.dominio.repositorio;
 
 import com.ceiba.restaurant.dominio.Persona;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
 
 import java.util.List;
 
 public interface RepositorioPersona {
     void agregar(Persona persona);
 
-    Persona obtenerPorId(long id);
+    DtoPersona obtenerPorId(long id);
 
-    List<Persona> listarTodo();
+    List<DtoPersona> listarTodo();
 
     void eliminar(long id);
 
-    Persona obtenerPorCedula(String cedula);
+    DtoPersona obtenerPorCedula(String cedula);
 
     void actualizar(Persona persona);
 }

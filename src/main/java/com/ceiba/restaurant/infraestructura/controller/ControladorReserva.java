@@ -3,6 +3,7 @@ package com.ceiba.restaurant.infraestructura.controller;
 import com.ceiba.restaurant.aplicacion.comando.ComandoReserva;
 import com.ceiba.restaurant.aplicacion.manejador.reserva.*;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.dto.DtoReserva;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,12 +30,12 @@ public class ControladorReserva {
 
     @PostMapping
     public void agregar(@RequestBody ComandoReserva comandoReserva){
-        this.manejadorUpdateEstado.ejecutar();
        this.manejadorCrearReserva.ejecutar(comandoReserva);
     }
 
     @PostMapping("/validar")
     public boolean comprobarDisponibilidad(@RequestBody ComandoReserva comandoReserva){
+        this.manejadorUpdateEstado.ejecutar();
         return this.manejadorValidarReserva.ejecutar(comandoReserva);
     }
 
@@ -44,7 +45,7 @@ public class ControladorReserva {
     }
 
     @GetMapping("/reservas")
-    public List<Reserva> listarTodo(){
+    public List<DtoReserva> listarTodo(){
         return this.manejadorListarReservas.ejecutar();
     }
 

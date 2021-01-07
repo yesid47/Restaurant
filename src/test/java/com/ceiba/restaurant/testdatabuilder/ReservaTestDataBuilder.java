@@ -6,6 +6,9 @@ import com.ceiba.restaurant.aplicacion.comando.ComandoReserva;
 import com.ceiba.restaurant.dominio.Mesa;
 import com.ceiba.restaurant.dominio.Persona;
 import com.ceiba.restaurant.dominio.Reserva;
+import com.ceiba.restaurant.dominio.dto.DtoMesa;
+import com.ceiba.restaurant.dominio.dto.DtoPersona;
+import com.ceiba.restaurant.dominio.dto.DtoReserva;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.MesaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.PersonaEntity;
 import com.ceiba.restaurant.infraestructura.persistencia.entidad.ReservaEntity;
@@ -16,13 +19,16 @@ import java.time.LocalTime;
 public class ReservaTestDataBuilder {
 
     private static final long ID = 1;
-    private static final LocalDate FECHA = LocalDate.parse("2021-01-07");
+    private static final LocalDate FECHA = LocalDate.parse("2200-01-04");
     private static final LocalTime HORA_INICIAL = LocalTime.parse("10:20");
     private static final LocalTime HORA_FINAL = LocalTime.parse("12:20");
     private static final double VALOR_A_PAGAR = 10000;
     private static final boolean ESTADO = true;
     private static final ComandoPersona COMANDO_PERSONA = new PersonaTestDataBuilder().buildComando();
     private static final ComandoMesa COMANDO_MESA = new MesaTestDataBuilder().buildComando();
+
+    private static final DtoPersona PERSONADTO = new PersonaTestDataBuilder().buildDto();
+    private static final DtoMesa MESADTO = new MesaTestDataBuilder().buildDto();
 
     private static final Persona PERSONA = new PersonaTestDataBuilder().build();
     private static final Mesa MESA = new MesaTestDataBuilder().build();
@@ -48,12 +54,19 @@ public class ReservaTestDataBuilder {
         this.valorAPagar = VALOR_A_PAGAR;
     }
 
-    public Reserva build(){
+    public DtoReserva buildDto(){
 
-        Reserva reserva=  new Reserva(this.fecha,this.horaInicial,this.horaFinal,PERSONA,MESA,this.valorAPagar,this.estado);
+        DtoReserva reserva=  new DtoReserva(this.fecha,this.horaInicial,this.horaFinal,PERSONADTO,MESADTO,this.valorAPagar,this.estado);
         reserva.setIdReserva(ID);
         return reserva;
     }
+
+    public Reserva build(){
+
+        Reserva reserva=  new Reserva(1,this.fecha,this.horaInicial,PERSONA,MESA);
+        return reserva;
+    }
+
 
     public ComandoReserva buildComando(){
         return new ComandoReserva(this.fecha,this.horaInicial,this.persona,this.mesa);
