@@ -8,7 +8,7 @@ public class Mesa {
     private static final String SE_DEBE_INGRESAR_LA_CAPACIDAD_DE_LA_MESA = "Se debe ingresar la capacidad de la mesa";
     private static final String SE_DEBE_INGRESAR_EL_NUMERO_DE_MESA = "Se debe ingresar el numero de mesa";
     private static final String SE_DEBE_INGRESAR_EL_PRECIO_DE_LA_MESA = "Se debe ingresar el precio de la mesa";
-    private static final String EL_VALOR_DE_LA_MESA_DEBE_SER_POSITIVO = "Se debe ingresar el precio de la mesa";
+    private static final String LOS_VALORES_DEBEN_SER_POSITIVOS = "Los valores deben ser positivos";
 
     private int idMesa;
     private int capacidadPersonas;
@@ -21,7 +21,9 @@ public class Mesa {
         validarObligatorio(capacidadPersonas,SE_DEBE_INGRESAR_LA_CAPACIDAD_DE_LA_MESA);
         validarObligatorio(numeroMesa,SE_DEBE_INGRESAR_EL_NUMERO_DE_MESA);
         validarObligatorio(precio,SE_DEBE_INGRESAR_EL_PRECIO_DE_LA_MESA);
-        validarPositivo(precio,EL_VALOR_DE_LA_MESA_DEBE_SER_POSITIVO);
+        validarPositivo((double) numeroMesa,LOS_VALORES_DEBEN_SER_POSITIVOS);
+        validarPositivo((double) capacidadPersonas,LOS_VALORES_DEBEN_SER_POSITIVOS);
+        validarPositivo(precio,LOS_VALORES_DEBEN_SER_POSITIVOS);
 
         this.capacidadPersonas = capacidadPersonas;
         this.numeroMesa = numeroMesa;

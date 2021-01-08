@@ -12,9 +12,9 @@ public class ComandoPersonaTest {
         //arrange
         ComandoPersona comandoPersonaEsperada = new PersonaTestDataBuilder().buildComando();
         //act
-        ComandoPersona comandoPersona = new ComandoPersona(comandoPersonaEsperada.getNombrePersona(), comandoPersonaEsperada.getCedula(), comandoPersonaEsperada.getCelular(), comandoPersonaEsperada.getEmail(), comandoPersonaEsperada.getDireccion());
+        ComandoPersona comandoPersona = new ComandoPersona(comandoPersonaEsperada.getNombre(), comandoPersonaEsperada.getCedula(), comandoPersonaEsperada.getCelular(), comandoPersonaEsperada.getEmail(), comandoPersonaEsperada.getDireccion());
         //assert
-        Assertions.assertEquals(comandoPersonaEsperada.getNombrePersona(),comandoPersona.getNombrePersona());
+        Assertions.assertEquals(comandoPersonaEsperada.getNombre(),comandoPersona.getNombre());
         Assertions.assertEquals(comandoPersonaEsperada.getCedula(),comandoPersona.getCedula());
         Assertions.assertEquals(comandoPersonaEsperada.getCelular(),comandoPersona.getCelular());
         Assertions.assertEquals(comandoPersonaEsperada.getEmail(),comandoPersona.getEmail());
